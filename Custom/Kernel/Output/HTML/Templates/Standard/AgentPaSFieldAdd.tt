@@ -1,0 +1,181 @@
+# --
+# Copyright (C) 2001-2016 OTRS AG, http://otrs.com/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+                    <!-- Layer Content -->
+                    <div class="col-sm-10 bgLightBlue bodySameHeight TicketCreationForm">
+                        <p class="panel-breadcrumbcontent">YTLC OTRS &raquo; <span>[% Translate("Create Question") | html %]</span></p>
+                        
+                        <div class="layer-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    
+                                    <p class="AsteriskExplanation">[% Translate("All fields marked with an asterisk (*) are mandatory.") | html %]</p>
+                                    
+                                    <!-- Layer Section -->
+                                    <div class="layer-section">
+                                        <div class="standardForm">
+                                            <form action="[% Env("CGIHandle") %]" method="post" name="compose" id="QuestionAddForm" enctype="multipart/form-data" class="Validate PreventMultipleSubmits">
+                                                <input type="hidden" name="Action"	value="[% Env("Action") %]"/>
+                                                <input type="hidden" name="Subaction" value="Save"/>
+                                                <input type="hidden" name="PaSID" value="[% Data.PaSID | html %]"/>
+                                                <input type="hidden" name="SelectedQuestionRefNo" id="SelectedQuestionRefNo" value=""/>
+                                                <input type="hidden" name="QuestionRefNo" id="QuestionRefNo" value="">
+
+                                                <!-- Section Header -->
+                                                <div class="section-header">
+                                                    <h2>Question Summary</h2>
+                                                </div>
+                                                <!-- End Section Header -->
+                                                <!-- Section Content -->
+                                                <div class="section-content">
+                                                    <div class="section-data wrap">
+                                                        <div class="row">
+                                                            [% RenderBlockStart("DynamicField_QuestionType") %]
+                                                            <div class="col-sm-6">
+                                                                <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                                    [% Data.Label %]
+                                                                    <div class="Field">
+                                                                        [% Data.Field %]
+                                                                    </div>
+                                                                    <div class="Clear"></div>
+                                                                </div>
+                                                            </div>
+                                                            [% RenderBlockEnd("DynamicField_QuestionType") %]
+                                                            
+                                                            [% RenderBlockStart("DynamicField_Question") %]
+                                                            <div class="col-sm-6">
+                                                                <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                                    [% Data.Label %]
+                                                                    <div class="Field">
+                                                                        [% Data.Field %]
+                                                                    </div>
+                                                                    <div class="Clear"></div>
+                                                                </div>
+                                                            </div>
+                                                            [% RenderBlockEnd("DynamicField_Question") %]
+                                                        </div>
+                                                        
+                                                        <div class="row">
+                                                            [% RenderBlockStart("DynamicField_Answers") %]
+                                                            <div class="col-sm-6">
+                                                                <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                                    [% Data.Label %]
+                                                                    <div class="Field">
+                                                                        [% Data.Field %]
+                                                                    </div>
+                                                                    <div class="Clear"></div>
+                                                                </div>
+                                                            </div>
+                                                            [% RenderBlockEnd("DynamicField_Answers") %]
+                                                            
+                                                            [% RenderBlockStart("DynamicField_Mandatory") %]
+                                                            <div class="col-sm-6">
+                                                                <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                                    [% Data.Label %]
+                                                                    <div class="Field">
+                                                                        [% Data.Field %]
+                                                                    </div>
+                                                                    <div class="Clear"></div>
+                                                                </div>
+                                                            </div>
+                                                            [% RenderBlockEnd("DynamicField_Mandatory") %]
+                                                        </div>
+                                                        
+                                                        <div class="row">
+                                                            [% RenderBlockStart("DynamicField_DefaultText") %]
+                                                            <div class="col-sm-6">
+                                                                <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                                    [% Data.Label %]
+                                                                    <div class="Field">
+                                                                        [% Data.Field %]
+                                                                    </div>
+                                                                    <div class="Clear"></div>
+                                                                </div>
+                                                            </div>
+                                                            [% RenderBlockEnd("DynamicField_DefaultText") %]                                                            
+                                                            
+                                                        </div>
+
+                                                        <div class="row">
+                                                            [% RenderBlockStart("DynamicField_Default") %]
+                                                            <div class="col-sm-6">
+                                                                <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                                    [% Data.Label %]
+                                                                    <div class="Field">
+                                                                        [% Data.Field %]
+                                                                    </div>
+                                                                    <div class="Clear"></div>
+                                                                </div>
+                                                            </div>
+                                                            [% RenderBlockEnd("DynamicField_Default") %]
+
+                                                            [% RenderBlockStart("DynamicField_DefaultText") %]
+                                                            <div class="col-sm-6">
+                                                                <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                                    [% Data.Label %]
+                                                                    <div class="Field">
+                                                                        [% Data.Field %]
+                                                                    </div>
+                                                                    <div class="Clear"></div>
+                                                                </div>
+                                                            </div>
+                                                            [% RenderBlockEnd("DynamicField_DefaultText") %]
+                                                            
+                                                            [% RenderBlockStart("DynamicField_Order") %]
+                                                            <div class="col-sm-6">
+                                                                <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                                    [% Data.Label %]
+                                                                    <div class="Field">
+                                                                        [% Data.Field %]
+                                                                    </div>
+                                                                    <div class="Clear"></div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            [% WRAPPER JSOnDocumentComplete %]
+                                                            <script type="text/javascript">//<![CDATA[
+
+                                                                if ('' == $('#QuestionRefNo').val()) {
+                                                                    Core.AJAX.FormUpdate($('#QuestionAddForm'), 'AJAXUpdate');
+                                                                }
+                                                            //]]></script>
+                                                            [% END %]
+                                                            [% RenderBlockEnd("DynamicField_Order") %]
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="section-data bordertop">
+                                                        <div class="Field">
+                                                            <button class="btn btn-submit" id="SubmitQuestionAdd" name="QuestionAdd" title="[% Translate("Create") | html %]" type="submit" value="[% Translate("Create") | html %]">
+                                                                <span>
+                                                                    <i class="fa fa-check-square-o"></i>
+                                                                    [% Translate("Create") | html %]
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- End Layer Section -->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Layer Content -->
+                    
+                    [% WRAPPER JSOnDocumentComplete %]
+                    <script type="text/javascript">
+                        $( document ).ready( function() {
+                            $( '#nav-Admin' ).removeClass( 'Selected' );
+                            $( '#nav-PaS' ).addClass( 'Selected' );
+                        } );
+                    </script>
+                    [% END %]

@@ -1,0 +1,24 @@
+# --
+# Copyright (C) 2001-2016 OTRS AG, http://otrs.com/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+                    <!-- Layer Content -->
+                    <div class="col-sm-10 bgLightBlue bodySameHeight TicketCreationForm">
+                        <p class="panel-breadcrumbcontent">YTLC OTRS &raquo; <span>[% Translate("Create Product & Services") | html %]</span></p>
+                        
+                        <div class="layer-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                  <div class="layer-section WidgetSimple">
+                                        <!-- Section Header -->
+                                        <div class="section-header">
+                                            <h2>[% Translate("You have no permission to create a Create Product & Services. Please contact your Administrator") | html %]</h2>
+                                        </div>
+                                </div>
+                        </div>
+                    </div>
+                    <!-- End Layer Content -->

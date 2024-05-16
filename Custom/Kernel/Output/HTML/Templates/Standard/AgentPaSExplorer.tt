@@ -1,0 +1,64 @@
+# --
+# Copyright (C) 2001-2016 OTRS AG, http://otrs.com/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+[% RenderBlockStart("Overview") %]
+<div class="MainBox AriaRoleMain SpacingTop">
+    <div class="W75pc SpacingBottom CenterBox">
+        <div class="WidgetSimple">
+            <div class="Header">
+                <h2>[% Translate("Overview") | html %]: [% Translate("Products and Services") | html %]</h2>
+            </div>
+            <div class="Content SpacingBottom">
+                <table class="DataTable SpacingTop">
+                    <thead>
+                        <tr>
+                            <th>[% Translate("Product Code") | html %]</th>
+                            <th>[% Translate("Product Name") | html %]</th>
+                            <th>[% Translate("Product Description") | html %]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+[% RenderBlockStart("OverviewRow") %]
+                        <tr class="MasterAction">
+                            <td>
+                                [% Data.LevelSpace %]
+                                <a class="MasterActionLink" href="[% Env("Baselink") %]Action=AgentITSMServiceZoom;ServiceID=[% Data.ServiceID | uri %]">
+                                    [% Data.ProductCode | html %]
+                                </a>
+                            </td>
+                            <td>[% Translate(Data.ProductName) | html %]</td>
+                            <td>[% Translate(Data.ProductDescription) | html %]</td>
+                        </tr>
+[% RenderBlockEnd("OverviewRow") %]
+[% RenderBlockStart("NoDataFoundMsg") %]
+                        <tr>
+                            <td colspan="5">
+                                [% Translate("No data found.") | html %]
+                            </td>
+                        </tr>
+[% RenderBlockEnd("NoDataFoundMsg") %]
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+[% RenderBlockEnd("Overview") %]
+
+[% WRAPPER JSOnDocumentComplete %]
+<script type="text/javascript">//<![CDATA[
+    $('.MasterAction').bind('click', function (Event) {
+        var $MasterActionLink = $(this).find('.MasterActionLink');
+        // only act if the link was not clicked directly
+        if (Event.target !== $MasterActionLink.get(0)) {
+            window.location = $MasterActionLink.attr('href');
+            return false;
+        }
+    });
+//]]></script>
+[% END %]

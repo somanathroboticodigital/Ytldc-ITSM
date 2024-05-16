@@ -1,0 +1,118 @@
+# --
+# Copyright (C) 2001-2016 OTRS AG, http://otrs.com/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+<div class="LayoutPopup ARIARoleMain TicketCreationForm">
+
+	<div class="Header">
+		<h1>[% Translate("Edit") | html %] [% Config("Question::Hook") %]: [% Data.QuestionNumber | html %] &ndash;</h1>
+		<p>
+			<a href="#" class="CancelClosePopup">[% Translate("Cancel & close") | html %]</a>
+		</p>
+	</div>
+
+			<form action="[% Env("CGIHandle") %]" method="post" name="compose" id="ProductEditForm" enctype="multipart/form-data" class="Validate PreventMultipleSubmits">
+				<input type="hidden" name="Action"	value="[% Env("Action") %]"/>
+				<input type="hidden" name="Subaction" value="Save"/>
+				<input type="hidden" name="QuestionID" value="[% Data.QuestionID | html %]"/>
+				<input type="hidden" name="PaSID" value="[% Data.PaSID | html %]"/>
+				<input type="hidden" name="FormID"	value="[% Data.FormID | html %]"/>
+				<input type="hidden" id="is_valid_product_to_save" name="is_valid_product_to_save" value="[% Data.is_valid_product_to_save | html %]"/>
+
+				<fieldset class="TableLike FixedLabelSmall">
+					<div class="form-table">
+						<h1 class="form-tableLabel">Header Details</h1>
+						<div class="accept-reject-based-fields" >
+					
+					[% RenderBlockStart("DynamicField_QuestionType") %]
+						<div class="Row Row_DynamicField_[% Data.Name | html %]">
+							[% Data.Label %]
+							<div class="Field">
+								[% Data.Field %]
+							</div>
+							<div class="Clear"></div>
+						</div>
+					[% RenderBlockEnd("DynamicField_QuestionType") %]
+					
+					[% RenderBlockStart("DynamicField_Question") %]
+						<div class="Row Row_DynamicField_[% Data.Name | html %]">
+							[% Data.Label %]
+							<div class="Field">
+								[% Data.Field %]
+							</div>
+							<div class="Clear"></div>
+						</div>
+					[% RenderBlockEnd("DynamicField_Question") %]
+					
+					[% RenderBlockStart("DynamicField_Answers") %]
+						<div class="Row Row_DynamicField_[% Data.Name | html %]">
+							[% Data.Label %]
+							<div class="Field">
+								[% Data.Field %]
+							</div>
+							<div class="Clear"></div>
+						</div>
+					[% RenderBlockEnd("DynamicField_Answers") %]
+					
+					[% RenderBlockStart("DynamicField_Mandatory") %]
+						<div class="Row Row_DynamicField_[% Data.Name | html %]">
+							[% Data.Label %]
+							<div class="Field">
+								[% Data.Field %]
+							</div>
+							<div class="Clear"></div>
+						</div>
+					[% RenderBlockEnd("DynamicField_Mandatory") %]
+
+					[% RenderBlockStart("DynamicField_DefaultText") %]
+                         <div class="col-sm-6">
+                          <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                               [% Data.Label %]
+                           <div class="Field">
+                                [% Data.Field %]
+                                  </div>
+                                  <div class="Clear"></div>
+                               </div>
+                          </div>
+                   [% RenderBlockEnd("DynamicField_DefaultText") %]
+					
+					[% RenderBlockStart("DynamicField_Default") %]
+						<div class="Row Row_DynamicField_[% Data.Name | html %]">
+							[% Data.Label %]
+							<div class="Field">
+								[% Data.Field %]
+							</div>
+							<div class="Clear"></div>
+						</div>
+					[% RenderBlockEnd("DynamicField_Default") %]
+					
+					[% RenderBlockStart("DynamicField_Order") %]
+						<div class="Row Row_DynamicField_[% Data.Name | html %]">
+							[% Data.Label %]
+							<div class="Field">
+								[% Data.Field %]
+							</div>
+							<div class="Clear"></div>
+						</div>
+					[% RenderBlockEnd("DynamicField_Order") %]
+					
+					
+						<div class="form-table">
+						<div class="Field SpacingTop" style="padding-left: 175px;">
+							<button class="Primary CallForAction" id="SubmitQuestionEdit" accesskey="g" name="ProductEdit" title="[% Translate("Submit") | html %] (g)" type="submit" value="[% Translate("Submit") | html %]">
+								<span>
+									<i class="fa fa-check-square-o"></i>
+									[% Translate("Submit") | html %]
+								</span>
+							</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+	<!-- 	</div>
+	</div>-->
+</div>

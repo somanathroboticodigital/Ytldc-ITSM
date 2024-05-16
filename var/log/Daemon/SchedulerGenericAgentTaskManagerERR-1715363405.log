@@ -1,0 +1,168 @@
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a054be80), "namespaces", "GenericAgent") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "TTL", 86400, "Value", HASH(0x5a379f767908), "Key", "JobList", "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "GenericAgent", "Key", "JobList", "Value", HASH(0x5a379f767908), "TTL", ...) called at /opt/otobo/Kernel/System/GenericAgent.pm line 549
+	Kernel::System::GenericAgent::JobList(Kernel::System::GenericAgent=HASH(0x5a379f71f6a8)) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1607
+	Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a37a0cf1410), "NodeID", 1, "PID", 11874) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerGenericAgentTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11874): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::GenericAgent::JobList Line: 549
+   Module: Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute Line: 1607
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a054be80), "namespaces", "GenericAgent") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Type", "GenericAgent", "Key", "JobGet::After change the owner ticket state change to open", "TTL", 86400, "Value", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "GenericAgent", "Key", "JobGet::After change the owner ticket state change to open", "Value", HASH(0x5a379f7784a8), "TTL", ...) called at /opt/otobo/Kernel/System/GenericAgent.pm line 738
+	Kernel::System::GenericAgent::JobGet(Kernel::System::GenericAgent=HASH(0x5a379f71f6a8), "Name", "After change the owner ticket state change to open") called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1619
+	Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a37a0cf1410), "NodeID", 1, "PID", 11874) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerGenericAgentTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11874): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::GenericAgent::JobGet Line: 738
+   Module: Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute Line: 1619
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a054be80), "namespaces", "GenericAgent") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Value", HASH(0x5a379f7784a8), "TTL", 86400, "Key", "JobGet::Approved  next queue and state", "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "GenericAgent", "Key", "JobGet::Approved  next queue and state", "Value", HASH(0x5a379f7784a8), "TTL", ...) called at /opt/otobo/Kernel/System/GenericAgent.pm line 738
+	Kernel::System::GenericAgent::JobGet(Kernel::System::GenericAgent=HASH(0x5a379f71f6a8), "Name", "Approved  next queue and state") called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1619
+	Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a37a0cf1410), "NodeID", 1, "PID", 11874) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerGenericAgentTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11874): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::GenericAgent::JobGet Line: 738
+   Module: Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute Line: 1619
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a054be80), "namespaces", "GenericAgent") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Type", "GenericAgent", "Key", "JobGet::Change type ticket sev 1&2 ticket update", "TTL", 86400, "Value", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "GenericAgent", "Key", "JobGet::Change type ticket sev 1&2 ticket update", "Value", HASH(0x5a379f7784a8), "TTL", ...) called at /opt/otobo/Kernel/System/GenericAgent.pm line 738
+	Kernel::System::GenericAgent::JobGet(Kernel::System::GenericAgent=HASH(0x5a379f71f6a8), "Name", "Change type ticket sev 1&2 ticket update") called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1619
+	Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a37a0cf1410), "NodeID", 1, "PID", 11874) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerGenericAgentTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11874): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::GenericAgent::JobGet Line: 738
+   Module: Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute Line: 1619
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a054be80), "namespaces", "GenericAgent") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Key", "JobGet::SR ticket after owner change state in Waiting for App"..., "Type", "GenericAgent", "TTL", 86400, "Value", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "GenericAgent", "Key", "JobGet::SR ticket after owner change state in Waiting for App"..., "Value", HASH(0x5a379f7784a8), "TTL", ...) called at /opt/otobo/Kernel/System/GenericAgent.pm line 738
+	Kernel::System::GenericAgent::JobGet(Kernel::System::GenericAgent=HASH(0x5a379f71f6a8), "Name", "SR ticket after owner change state in Waiting for Approval") called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1619
+	Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a37a0cf1410), "NodeID", 1, "PID", 11874) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerGenericAgentTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11874): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::GenericAgent::JobGet Line: 738
+   Module: Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute Line: 1619
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a054be80), "namespaces", "GenericAgent") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Key", "JobGet::Set SLA", "Type", "GenericAgent", "Value", HASH(0x5a379f7784a8), "TTL", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "GenericAgent", "Key", "JobGet::Set SLA", "Value", HASH(0x5a379f7784a8), "TTL", ...) called at /opt/otobo/Kernel/System/GenericAgent.pm line 738
+	Kernel::System::GenericAgent::JobGet(Kernel::System::GenericAgent=HASH(0x5a379f71f6a8), "Name", "Set SLA") called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1619
+	Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a37a0cf1410), "NodeID", 1, "PID", 11874) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerGenericAgentTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11874): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::GenericAgent::JobGet Line: 738
+   Module: Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute Line: 1619
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a054be80), "namespaces", "GenericAgent") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Type", "GenericAgent", "Key", "JobGet::Update change type ticket for sev 3 & 4", "TTL", 86400, "Value", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "GenericAgent", "Key", "JobGet::Update change type ticket for sev 3 & 4", "Value", HASH(0x5a379f7784a8), "TTL", ...) called at /opt/otobo/Kernel/System/GenericAgent.pm line 738
+	Kernel::System::GenericAgent::JobGet(Kernel::System::GenericAgent=HASH(0x5a379f71f6a8), "Name", "Update change type ticket for sev 3 & 4") called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1619
+	Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a37a0cf1410), "NodeID", 1, "PID", 11874) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerGenericAgentTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11874): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::GenericAgent::JobGet Line: 738
+   Module: Kernel::System::Daemon::SchedulerDB::GenericAgentTaskToExecute Line: 1619
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerGenericAgentTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+

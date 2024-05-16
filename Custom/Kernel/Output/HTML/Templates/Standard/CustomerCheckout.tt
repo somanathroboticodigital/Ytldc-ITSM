@@ -1,0 +1,383 @@
+# --
+# Copyright (C) 2001-2015 OTRS AG, http://otrs.com/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+<div class="ARIARoleMain col-sm-12 page-checkout [% Config('Ticket::Frontend::CustomerTicketOverviewSortable') %]">
+   <!-- Layer Page Header -->
+   <div class="layer-pageheader">
+      <h1>Service Catalogue</h1>
+   </div>
+   <!-- End Layer Page Header -->
+   <!-- Layer Section -->
+   <div class="layer-section">
+      <!-- Section Header -->
+      <div class="section-header">
+         [% IF Data.HeadPaSTitle == 'Vendor Staff Onboarding' %]
+         <h2>Employee Onboarding</h2>
+         [% ELSIF Data.HeadPaSTitle == 'Vendor Staff Offboarding' %]
+         <h2>Employee Off-boarding</h2>
+         [% ELSE %]
+         <h2>[% Data.HeadPaSTitle | html %]</h2>
+         [% END %]
+      </div>
+      <!-- End Section Header -->
+      <!-- Section Content -->
+      <div class="section-content" style="padding-left: 18%;">
+         <div class="standardForm">
+            <form action="[% Env('CGIHandle') %]" method="post" name="compose" id="CheckoutForm" enctype="multipart/form-data" class="PreventMultipleSubmits">
+               <input type="hidden" name="Action" value="[% Env("Action") %]" />
+               <input type="hidden" name="Subaction" value="Save" />
+               <input type="hidden" name="FormID" value="[% Data.FormID | html %]" />
+               <input type="hidden" name="SelectedPaSRefNo" id="SelectedPaSRefNo" value="[% Data.PaSID | html %]"/>
+               <input type="hidden" name="PaSRefNo" id="PaSRefNo" value="[% Data.PaSID | html %]">
+               <input type="hidden" id = 'TechOpsTitle' name="TechOpsTitle" value="[% Data.HeadPaSTitle | html %]" />
+               <div class="section-data wrap">
+                  <table class="CatalogTable">
+                     <tbody>
+                        [% RenderBlockStart( "ShoppingCart1" ) %]
+                        <tr>
+                           <td class="cell-panelimage">
+                              <p class="panel-image"><a href="[% Env("Baselink") %]Action=CustomerPaSZoom;PaSID=[% Data.PaSID | uri %];Subaction=Edit" title="[% Data.DynamicField_PasTitle %]"><img src="[% Env("Baselink") %]Action=CustomerPaSZoom;Subaction=ShowImage;PaSID=[% Data.PaSID %];Filename=[% Data.Filename %];" alt="[% Data.DynamicField_PasTitle %]" title="[% Data.DynamicField_PasTitle %]" /></a></p>
+                           </td>
+                           <td class="cell-prodname">
+                              <h4><a href="[% Env("Baselink") %]Action=CustomerPaSZoom;PaSID=[% Data.PaSID | uri %];Subaction=Edit" title="[% Data.DynamicField_PasTitle %]">[% Data.DynamicField_PasTitle %]</a></h4>
+                           </td>
+                           <td class="cell-prodprice" data-price="[% Data.DynamicField_PaSCost %]">[% Data.DynamicField_PaSCost %]</td>
+                           <td class="cell-prodquantity">
+                              [% Data.quantity %]
+                              <!--                                                                 <input type="text" name="quantity" class="input-quantity" value="[% Data.quantity %]" /> -->
+                              <!--                                                                 <input type="hidden" name="subtotal" value="[% Data.subtotal %]" /> -->
+                           </td>
+                           <td class="cell-prodtotalprice">[% Data.subtotal %]</td>
+                           <td class="cell-prodremove"><a href="[% Env("Baselink") %]Action=CustomerCheckout;Subaction=Remove;PaSID=[% Data.PaSID %]" title="Remove This Item" class="btn btn-remove"><span>Remove</span></a></td>
+                        </tr>
+                        [% RenderBlockEnd( "ShoppingCart1" ) %]
+                     </tbody>
+                  </table>
+               </div>
+               [% WRAPPER JSOnDocumentComplete %]
+               <script type="text/javascript">//<![CDATA[
+                  if ('' == $('#PaSRefNo').val()) {
+                      Core.AJAX.FormUpdate($('#CheckoutForm'), 'AJAXUpdate');
+                  }
+                  
+                  //disbable submit button if one of the quantity is 
+                  $( document ).ready( function() {
+                      
+                      var title="[% Data.HeadPaSTitle  %]";
+                      console.log(title+$("#AttachmentUpload").val());
+                     
+                      if(title=="Door Access Request" || title=="Shared Space Resource Form"){
+                          $("#FileUpload").prop('required',true);
+                          $("#Instructions").prop('required',true);
+                          if ($("#AttachmentDelete1").length) {
+                               $('#FileUpload').removeAttr("required");
+                          } else {
+                               $("#FileUpload").attr("required", "true");
+                          }
+                  
+                      }
+                  
+                    var quantity = $(".cell-prodquantity");
+                    
+                      quantity.each( function () {
+                  
+                        if ( $( this ).text() == 0 ) {  
+                            $( ".btn-submit" ).prop( 'disabled', true);
+                        }
+                      } );                                                              
+                  } );
+                  
+                  
+                  
+                  //]]>
+               </script>
+               [% END %]
+               <div class="section-action">
+                  <h4>Requester Details</h4>
+               </div>
+               <div class="section-data wrap">
+                  <div class="row">
+                     <div class="col-sm-6">
+                        <div class="Row Row_DynamicField">
+                           <label for="RequestedFor">Requester</label>
+                           <div class="Field">
+                              <div class="InputField_Container" tabindex="-1">
+                                 <div class="InputField_InputContainer">
+                                    <input name="RequestedFor" id="RequestedFor" class="InputField_Search input-text" type="text" value="[% Translate('%s', Env( 'UserFirstname' )) | html %] [% Translate('%s', Env( 'UserLastname' )) | html %]"readonly/>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-6"></div>
+                  </div>
+                  <div class="row">
+                     <div class="col-sm-6">
+                        <div class="Row Row_DynamicField">
+                           <label id="Instructions" for="Instructions"> * Special Instructions</label>
+                           <div class="Field">
+                              <div class="InputField_Container" tabindex="-1">
+                                 <div class="InputField_InputContainer">
+                                    <textarea style="min-height:180px" id="Instructions" name="Instructions" class="RichText Validate_Required">[% Data.Instructions | html %]</textarea>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  [% WRAPPER JSOnDocumentComplete %]
+                  <script type="text/javascript">//<![CDATA[
+                     $(function(){
+                         $('#chargeable input:checkbox').attr('checked', 'checked');
+                     });
+                     
+                     //]]>
+                  </script>
+                  [% END %]
+                  [% RenderBlockStart("DynamicField_Chargeable") %]
+                  <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                     [% Data.Label %]
+                     <div class="Field">
+                        [% Data.Field %]
+                     </div>
+                     <div class="Clear"></div>
+                  </div>
+                  [% RenderBlockEnd("DynamicField_Chargeable") %]
+                  <div class="row">
+                     [% RenderBlockStart("AttachmentUpload") %]
+                     <div class="col-sm-4">
+                        <label class="attachmentlable">
+                        [% IF Data.HeadingPaSTitle == 'Vendor Staff Onboarding' || Data.HeadingPaSTitle == 'Vendor Staff Offboarding'%]
+                        *[% Translate("Attach Approval Mail") | html %]:
+                        [% ELSIF Data.HeadingPaSTitle == 'Door Access Request' %]
+                        [% Translate("Attach Email or File") | html %]:
+                        [% ELSIF Data.HeadingPaSTitle == 'Shared Space Resource Form' %] 
+                        [% Translate("Attach Email or File") | html %]:
+                        [% ELSE %]
+                        [% Translate("Attach Image or File") | html %]:
+                        [% END %]
+                        </label>
+                        [% IF Data.HeadingPaSTitle == 'Vendor Signup' %]
+                        <span style="font-size:10px;color:#007bff!important">*ENSURE THAT PLEASE UPLOAD VENDOR SIGNUP RELATED APPROVAL MAILS OR FILES<br/>Please do not upload same file twice.</span>
+                        [% ELSIF Data.HeadingPaSTitle == 'Door Access Request' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'Shared Space Resource Form' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'IT PMO' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'Testing & Automation' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'Portal Development' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'PCC Rules Request' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'System Availability Tier1 Infra1' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'System Availability Tier1 Infra2' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'System Availability Tier2 Infra1' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'System Availability Tier2 Infra2' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'System Availability Tier3 Infra1' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'System Availability Tier3 Infra2' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'Handling SR' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'High Availability BSSOSS Hardware' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'High Availability BSSOSS Application' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'High Availability Portal Application' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'High Availability Enterprise Application' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'BSSOSS Billing' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'BSSOSS Payment' %]
+                        [% ELSIF Data.HeadingPaSTitle == 'BSSOSS Dunning' %]
+                        [% ELSE %]
+                        <span id="att_note" style="font-size:10px;color:#007bff!important">*ENSURE THAT SRF IS NOT ATTACHED AND THERE ARE NO SALARY INFORMATION MENTIONED IN THE APPROVAL EMAILS<br/>Please do not upload same file twice.</span>
+                        [% END %]
+                        <br>
+                        <br>
+                        <div class="Field">
+                           <ul>
+                              [% RenderBlockStart("Attachment") %]
+                              <li>
+                                 [% Data.Filename | html %] ([% Data.Filesize | html %])
+                                 <button type="submit" id="AttachmentDelete[% Data.FileID | html %]" name="AttachmentDelete[% Data.FileID | html %]" value="[% Translate("Delete") | html %]">[% Translate("Delete") | html %]</button>
+                                 [% WRAPPER JSOnDocumentComplete %]
+                                 <script type="text/javascript">//<![CDATA[
+                                    $('#AttachmentDelete[% Data.FileID | html %]').bind('click', function () {
+                                        Core.Form.Validate.DisableValidation($('#AttachmentDelete[% Data.FileID | html %]').closest('form'));
+                                    
+                                                var title="[% Data.HeadPaSTitle  %]";
+                                    console.log(title+$("#AttachmentUpload").val());
+                                    
+                                    //alert("in delete"+$("#AttachmentUpload").val());
+                                    
+                                    
+                                    
+                                    });
+                                                                                    //]]>
+                                 </script>
+                                 [% END %]
+                              </li>
+                              [% RenderBlockEnd("Attachment") %]
+                              <li>
+                                 [% IF Data.HeadingPaSTitle == 'Vendor Staff Onboarding' ||  Data.HeadingPaSTitle == 'Vendor Staff Offboarding' %]
+                                 <input name="FileUpload" id="FileUpload" type="file" size="40" class="Validate_Required"/>
+                                 [% ELSIF Data.HeadingPaSTitle == 'Shared Space Resource Form' ||  Data.HeadingPaSTitle == 'Door Access Request' %]
+                                 <input name="FileUpload" id="FileUpload" type="file" size="40" class="Validate_Required"/>
+                                 [% ELSE %]
+                                 <input name="FileUpload" id="FileUpload" type="file" size="40" />
+                                 [% END %]
+                                 <input type="hidden" id="AttachmentUpload" name="AttachmentUpload" value="0" />
+                              </li>
+                           </ul>
+                        </div>
+                        <div class="Clear"></div>
+                     </div>
+                     [% WRAPPER JSOnDocumentComplete %]
+                     <script type="text/javascript">//<![CDATA[
+                        $('#FileUpload').bind('change', function (Event) {
+                            //alert("file upload");
+                            var $Form = $('#FileUpload').closest('form');
+                            Core.Form.Validate.DisableValidation($Form);
+                            
+                            
+                            $Form.find('#AttachmentUpload').val('1').end().submit();
+                            console.log($('#AttachmentUpload').val());
+                        
+                            
+                        
+                        });
+                        //]]>
+                     </script>
+                     [% END %]
+                     [% RenderBlockEnd("AttachmentUpload") %]
+                  </div>
+               </div>
+               <div class="section-data wrap bordertop">
+                  <div class="row">
+                     [% RenderBlockStart("Total") %]
+                     <div class="col-sm-6">
+                        <p class="prod-subtotal">
+                        </p>
+                     </div>
+                     <div class="col-sm-6 alignRight">
+                        <button type="submit" id="submit_btn" class="btn btn-submit">Submit Request</button>
+                     </div>
+                     [% RenderBlockEnd("Total") %]
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <!-- End Section Content -->
+   </div>
+   <!-- End Layer Section -->
+</div>
+[% RenderBlockStart( "CheckoutConfirm" ) %]
+<div class="modal fade dialog-checkout" id="modal-checkout" role="dialog" data-backdrop="static" data-keyboard="false">
+   <div class="modal-dialog modal-md">
+      <div class="modal-content">
+         <!--                                    <div class="modal-header Header">
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title"></h4>
+            </div>-->
+         <div class="modal-body Content">
+            <div class="row">
+               <div class="col-sm-12 alignCenter">
+                  <p class="marginBottom15" style="color: #CDCA25; font-size: 120px; line-height: 120px;"><i class="fa fa-check-circle" aria-hidden="true"></i></p>
+                  <p style="font-size: 18px;">Your information has been successfully sent to the Resolver Group</p>
+                  <p style="font-size: 18px;">You will shortly receive an email that will confirm your details as well as providing you with a reference number, which must be used in all correspondence with the Resolver Group</p>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer Footer">
+            <div class="row">
+               <div class="col-sm-12 alignCenter">
+                  <button class="btn btn-target" data-target="/otrs/customer.pl?Action=CustomerDashboard">OK</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+[% WRAPPER JSOnDocumentComplete %]
+<script type="text/javascript">//<![CDATA[
+   $( '#modal-checkout' ).modal();
+   
+   $( '.modal button.close' ).click( function() {
+       
+       window.location.href    = '/otrs/customer.pl?Action=CustomerDashboard';
+   } );
+   //]]>
+</script>
+[% END %]
+[% RenderBlockEnd( "CheckoutConfirm" ) %]
+[% WRAPPER JSOnDocumentComplete %]
+<script type="text/javascript">//<![CDATA[
+   $( '.btn-target' ).click( function() {
+       //alert("submit");
+       var dataTarget  = $( this ).attr( 'data-target' );
+       
+       window.location.href    = dataTarget;
+   } );
+   //]]>
+   
+   
+   /* $("#submit_btn").click(function(e)
+   {
+   //alert(`[% Data.AttachmentFileCheck %]`);
+   [% IF !Data.AttachmentFileCheck %]
+       e.preventDefault();
+   [% END %]
+   
+   
+       alert('Form is submitting....');
+   // Or Do Something...
+   
+   //    return false;
+   });*/
+   
+   // KPI Data Collection OTRSN-826 start
+   let KPI_Collections = [ 'IT PMO',
+                       'Testing & Automation',
+                       'Portal Development',
+                       'System Availability Tier1 Infra1',
+                       'System Availability Tier1 Infra2',
+                       'System Availability Tier2 Infra1',
+                       'System Availability Tier2 Infra2',
+                       'System Availability Tier3 Infra1',
+                       'System Availability Tier3 Infra2',
+                       'Handling SR',
+                       'High Availability BSSOSS Hardware',
+                       'High Availability BSSOSS Application',
+                       'High Availability Portal Application',
+                       'High Availability Enterprise Application',
+                       'BSSOSS Billing',
+                       'BSSOSS Payment',
+                       'BSSOSS Dunning' ];
+   if (KPI_Collections.includes(`[% Data.HeadingPaSTitle %]`)) {                            
+   $("#Instructions").prop('required',true);
+   }
+   // KPI Data Collection OTRSN-826 end
+   
+</script>
+[% END %]
+[% WRAPPER JSOnDocumentComplete %]
+<script type="text/javascript">//<![CDATA[
+   let TechOpsTitle = $('#TechOpsTitle').val();
+    if(TechOpsTitle == 'WIFI Request' || TechOpsTitle == 'PCC Rules Request' || TechOpsTitle == 'VPN Access' || TechOpsTitle == 'Firewall Request' || TechOpsTitle == 'Operator NOA Request' || TechOpsTitle == 'DNS Request' || TechOpsTitle == 'Load Balancer Request (F5)' || TechOpsTitle == 'SeGW Request' || TechOpsTitle == 'LAN' || TechOpsTitle == 'DIA DLL Request' || TechOpsTitle == 'CES Request' || TechOpsTitle == 'Decommission of Network' || TechOpsTitle == 'Commissioning of New Service'){
+    $('#att_note').hide();
+    $("#Instructions").text("Special Instructions");            
+   }      
+   
+   if (TechOpsTitle == 'Operator NOA Request') {
+    $(".attachmentlable").text("* NOA Plan & Test Plan");
+    // $('#FileUpload').addClass('Validate_Required');
+    // $("#FileUpload").attr("required", "true");
+    if ($("#AttachmentDelete1").length) {
+         $('#FileUpload').removeAttr("required");
+        // The button with id "AttachmentDelete1" exists.
+        console.log("Button exists");
+    } else {
+         $("#FileUpload").attr("required", "true");
+        // The button with id "AttachmentDelete1" does not exist.
+         
+        console.log("Button does not exist");
+    }
+   }
+   //]]>
+</script>
+[% END %]

@@ -1,0 +1,1243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<otobo_config version="2.0" init="Application">
+	<Setting Name="Frontend::Module###AgentPaSAdd" Required="0" Valid="1">
+	<Description Translatable="1">Frontend module registration for PaS add in the agent interface.</Description>
+	<Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+	<Value>
+	    <Item ValueType="FrontendRegistration">
+	        <Hash>
+	            <Item Key="GroupRo">
+	                <Array>
+	                </Array>
+	            </Item>
+	            <Item Key="Group">
+	                <Array>
+	                    <Item>admin</Item>
+	                </Array>
+	            </Item>
+	            <Item Key="Description" Translatable="1">PaS Add Module.</Item>
+	            <Item Key="Title" Translatable="1">PaS</Item>
+	            <Item Key="NavBarName">PaS</Item>
+	        </Hash>
+	    </Item>
+	</Value>
+	</Setting>
+	<Setting Name="Loader::Module::AgentPaSAdd###002-Ticket" Required="0" Valid="1">
+	<Description Translatable="1">Loader module registration for the agent interface.</Description>
+	<Navigation>Frontend::Admin::ModuleRegistration::Loader</Navigation>
+	<Value>
+	    <Hash>
+	        <Item Key="CSS">
+	            <Array>
+	                <Item>PaS.Agent.Default.css</Item>
+	            </Array>
+	        </Item>
+	        <Item Key="JavaScript">
+	            <Array>
+	                <Item>Custom.AgentPaSAdd.js</Item>
+	            </Array>
+	        </Item>
+	    </Hash>
+	</Value>
+	</Setting>
+
+	<Setting Name="Frontend::Module###AgentPaSDelete" Required="0" Valid="1">
+	<Description Translatable="1">Frontend module registration for the agent interface.</Description>
+	<Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+	<Value>
+	    <Item ValueType="FrontendRegistration">
+	        <Hash>
+	            <Item Key="GroupRo">
+	                <Array>
+	                </Array>
+	            </Item>
+	            <Item Key="Group">
+	                <Array>
+	                    <Item>admin</Item>
+	                </Array>
+	            </Item>
+	            <Item Key="Description" Translatable="1">PaS Delete.</Item>
+	            <Item Key="Title" Translatable="1">Delete</Item>
+	            <Item Key="NavBarName">PaS</Item>
+	        </Hash>
+	    </Item>
+	</Value>
+	</Setting>
+	<Setting Name="Loader::Module::AgentPaSDelete###002-Ticket" Required="0" Valid="1">
+	<Description Translatable="1">Loader module registration for the agent interface.</Description>
+	<Navigation>Frontend::Admin::ModuleRegistration::Loader</Navigation>
+	<Value>
+	    <Hash>
+	        <Item Key="CSS">
+	            <Array>
+	                <Item></Item>
+	            </Array>
+	        </Item>
+	        <Item Key="JavaScript">
+	            <Array>
+	                <Item></Item>
+	            </Array>
+	        </Item>
+	    </Hash>
+	</Value>
+	</Setting>
+
+	<Setting Name="DynamicFields::ObjectType###PaS" Required="0" Valid="1">
+        <Description Translatable="1">DynamicField object registration.</Description>
+        <Navigation>Core::DynamicFields::ObjectTypeRegistration</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="DisplayName" Translatable="1">PaS</Item>
+                <Item Key="Module">Kernel::System::DynamicField::ObjectType::PaS</Item>
+                <Item Key="Prio">200</Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="Ticket::EventModulePost###PaSDynamicFieldDefault" Required="0" Valid="0">
+        <Description Translatable="1">Event module registration. For more performance you can define a trigger event (e. g. Event =&gt; PaSCreate). This is only possible if all PaS dynamic fields need the same event.</Description>
+        <Navigation>Core::PaSDynamicFieldDefault</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::System::PaS::Event::PaSDynamicFieldDefault</Item>
+                <Item Key="Transaction">1</Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="PaS::Frontend::AgentPaSAdd###DynamicField" Required="0" Valid="1">
+        <Description Translatable="1">Dynamic fields shown in the ticket close screen of the agent interface.</Description>
+        <Navigation>Frontend::Agent::View::AgentPaSAdd</Navigation>
+        <Value>
+            <Hash>
+                <DefaultItem ValueType="Select">
+                    <Item ValueType="Option" Value="0" Translatable="1">0 - Disabled</Item>
+                    <Item ValueType="Option" Value="1" Translatable="1">1 - Enabled</Item>
+                    <Item ValueType="Option" Value="2" Translatable="1">2 - Enabled and required</Item>
+                </DefaultItem>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="AgentPaS::RunInitialWildcardSearch" Required="1" Valid="1">
+        <Description Translatable="1">Runs an initial wildcard search of the existing customer company when accessing the AgentPaS module.</Description>
+        <Navigation>Frontend::Admin::View::AgentPaS</Navigation>
+        <Value>
+            <Item ValueType="Checkbox">1</Item>
+        </Value>
+    </Setting>
+
+    <Setting Name="Events###PaS" Required="1" Valid="1">
+        <Description Translatable="1">List of all PaS events to be displayed in the GUI.</Description>
+        <Navigation>Frontend::Admin</Navigation>
+        <Value>
+            <Array>
+                <Item>PaSAdd</Item>
+                <Item>PaSUpdate</Item>
+            </Array>
+        </Value>
+    </Setting>
+
+    <Setting Name="PaS::EventModulePost###100-UpdatePaS" Required="0" Valid="1">
+        <Description Translatable="1">Event module that performs an update statement on TicketIndex to rename the queue name there if needed and if StaticDB is actually used.</Description>
+        <Navigation>Core::PaS</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::System::PaS::Event::PaSUpdate</Item>
+                <Item Key="Event">PaSUpdate</Item>
+                <Item Key="Transaction">0</Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="PaS::Frontend::AgentPaSZoom###DynamicField" Required="0" Valid="1">
+        <Description Translatable="1">Dynamic fields shown in the sidebar of the ticket zoom screen of the agent interface.</Description>
+        <Navigation>Frontend::Agent::PaS::ViewPaSZoom</Navigation>
+        <Value>
+            <Hash>
+                <DefaultItem ValueType="Select">
+                    <Item ValueType="Option" Value="0" Translatable="1">0 - Disabled</Item>
+                    <Item ValueType="Option" Value="1" Translatable="1">1 - Enabled</Item>
+                </DefaultItem>
+            </Hash>
+        </Value>
+    </Setting>
+
+
+    <Setting Name="Ticket::Frontend::PlainView" Required="1" Valid="1">
+        <Description Translatable="1">Shows a link to see a zoomed email ticket in plain text.</Description>
+        <Navigation>Frontend::Agent::PaS::ViewZoom</Navigation>
+        <Value>
+            <Item ValueType="Checkbox">0</Item>
+        </Value>
+    </Setting>
+
+    <Setting Name="Frontend::Module###AgentPaSAttachment" Required="0" Valid="1">
+		<Description Translatable="1">Frontend module registration for the agent interface.</Description>
+		<Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+		<Value>
+		    <Item ValueType="FrontendRegistration">
+		        <Hash>
+		            <Item Key="GroupRo">
+		                <Array>
+		                </Array>
+		            </Item>
+		            <Item Key="Group">
+		                <Array>
+		                    <Item>admin</Item>
+		                </Array>
+		            </Item>
+		            <Item Key="Description" Translatable="1">To download attachments</Item>
+		            <Item Key="Title" Translatable="1"></Item>
+		            <Item Key="NavBarName">PaS</Item>
+		        </Hash>
+		    </Item>
+		</Value>
+	</Setting>
+
+	<Setting Name="Frontend::Module###AgentPaSZoom" Required="0" Valid="1">
+		<Description Translatable="1">Frontend module registration for the agent interface.</Description>
+		<Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+		<Value>
+		    <Item ValueType="FrontendRegistration">
+		        <Hash>
+		            <Item Key="GroupRo">
+		                <Array>
+		                </Array>
+		            </Item>
+		            <Item Key="Group">
+		                <Array>
+		                    <Item>admin</Item>
+		                </Array>
+		            </Item>
+		            <Item Key="Description" Translatable="1">PaS Zoom</Item>
+		            <Item Key="Title" Translatable="1">Zoom</Item>
+		            <Item Key="NavBarName">PaS</Item>
+		        </Hash>
+		    </Item>
+		</Value>
+	</Setting>
+	<Setting Name="Loader::Module::AgentPaSZoom###002-Ticket" Required="0" Valid="1">
+		<Description Translatable="1">Loader module registration for the agent interface.</Description>
+		<Navigation>Frontend::Admin::ModuleRegistration::Loader</Navigation>
+		<Value>
+		    <Hash>
+		        <Item Key="CSS">
+		            <Array>
+		                <Item></Item>
+		            </Array>
+		        </Item>
+		        <Item Key="JavaScript">
+		            <Array>
+		                <Item>PaS.Agent.ConfirmationDialog.js</Item>
+		                <Item>PaS.Agent.PaSZoom.js</Item>
+		                <Item>Custom.Agent.PaSZoom.TimelineView.js</Item>
+		            </Array>
+		        </Item>
+		    </Hash>
+		</Value>
+	</Setting>
+
+	<Setting Name="Frontend::Module###CustomerPaSZoom" Required="0" Valid="1">
+		<Description Translatable="1">Frontend module registration for the agent interface.</Description>
+		<Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+		<Value>
+		    <Item ValueType="FrontendRegistration">
+		        <Hash>
+		            <Item Key="GroupRo">
+		                <Array>
+		                </Array>
+		            </Item>
+		            <Item Key="Group">
+		                <Array>
+		                    <Item>admin</Item>
+		                </Array>
+		            </Item>
+		            <Item Key="Description" Translatable="1">PaS Zoom</Item>
+		            <Item Key="Title" Translatable="1">Zoom</Item>
+		            <Item Key="NavBarName">PaS</Item>
+		        </Hash>
+		    </Item>
+		</Value>
+	</Setting>
+	<Setting Name="Loader::Module::CustomerPaSZoom###002-Ticket" Required="0" Valid="1">
+		<Description Translatable="1">Loader module registration for the agent interface.</Description>
+		<Navigation>Frontend::Admin::ModuleRegistration::Loader</Navigation>
+		<Value>
+		    <Hash>
+		        <Item Key="CSS">
+		            <Array>
+		                <Item></Item>
+		            </Array>
+		        </Item>
+		        <Item Key="JavaScript">
+		            <Array>
+		                <Item>PaS.Agent.ConfirmationDialog.js</Item>
+		                <Item>PaS.Agent.PaSZoom.js</Item>
+		                <Item>Custom.Agent.PaSZoom.TimelineView.js</Item>
+		            </Array>
+		        </Item>
+		    </Hash>
+		</Value>
+	</Setting>
+
+	<Setting Name="Frontend::Module###CustomerCheckout" Required="0" Valid="1">
+	    <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+	    <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+	    <Value>
+	        <Item ValueType="FrontendRegistration">
+	            <Hash>
+	                <Item Key="GroupRo">
+	                    <Array>
+	                    </Array>
+	                </Item>
+	                <Item Key="Group">
+	                    <Array>
+	                        <Item>admin</Item>
+	                    </Array>
+	                </Item>
+	                <Item Key="Description" Translatable="1">PaS Checkout</Item>
+	                <Item Key="Title" Translatable="1">Checkout</Item>
+	                <Item Key="NavBarName">PaS</Item>
+	            </Hash>
+	        </Item>
+	    </Value>
+	</Setting>
+	<Setting Name="Loader::Module::CustomerCheckout###002-Ticket" Required="0" Valid="1">
+	    <Description Translatable="1">Loader module registration for the agent interface.</Description>
+	    <Navigation>Frontend::Admin::ModuleRegistration::Loader</Navigation>
+	    <Value>
+	        <Hash>
+	            <Item Key="CSS">
+	                <Array>
+	                    <Item></Item>
+	                </Array>
+	            </Item>
+	            <Item Key="JavaScript">
+	                <Array>
+	                    <Item>PaS.Agent.ConfirmationDialog.js</Item>
+	                    <Item>PaS.Agent.PaSZoom.js</Item>
+	                    <Item>Custom.Agent.PaSZoom.TimelineView.js</Item>
+	                </Array>
+	            </Item>
+	        </Hash>
+	    </Value>
+	</Setting>
+
+	<Setting Name="Frontend::Module###AgentPaSEdit" Required="0" Valid="1">
+	    <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+	    <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+	    <Value>
+	        <Item ValueType="FrontendRegistration">
+	            <Hash>
+	                <Item Key="GroupRo">
+	                    <Array>
+	                    </Array>
+	                </Item>
+	                <Item Key="Group">
+	                    <Array>
+	                        <Item>admin</Item>
+	                    </Array>
+	                </Item>
+	                <Item Key="Description" Translatable="1">PaS Edit</Item>
+	                <Item Key="Title" Translatable="1">Edit</Item>
+	                <Item Key="NavBarName">PaS</Item>
+	            </Hash>
+	        </Item>
+	    </Value>
+	</Setting>
+	<Setting Name="Loader::Module::AgentPaSEdit###002-Ticket" Required="0" Valid="1">
+	    <Description Translatable="1">Loader module registration for the agent interface.</Description>
+	    <Navigation>Frontend::Admin::ModuleRegistration::Loader</Navigation>
+	    <Value>
+	        <Hash>
+	            <Item Key="CSS">
+	                <Array>
+	                    <Item></Item>
+	                </Array>
+	            </Item>
+	            <Item Key="JavaScript">
+	                <Array>
+	                    <Item>Custom.AgentPaSEdit.js</Item>
+	                </Array>
+	            </Item>
+	        </Hash>
+	    </Value>
+	</Setting>
+
+	<Setting Name="PaS::Frontend::MenuModule###010-Back" Required="0" Valid="1">
+        <Description Translatable="1">Shows a link in the menu to go back in the change zoom view of the agent interface.</Description>
+        <Navigation>Frontend::Agent::PaS::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::PaS::MenuGeneric</Item>
+                <Item Key="Name" Translatable="1">Back</Item>
+                <Item Key="Description" Translatable="1">Go back</Item>
+                <Item Key="Action">AgentPaS</Item>
+                <Item Key="Link">Action=AgentPaS</Item>
+                <Item Key="Target">Back</Item>
+                <Item Key="PopupType"></Item>
+                <Item Key="ClusterName" Translatable="1"></Item>
+                <Item Key="ClusterPriority"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="PaS::Frontend::MenuModule###020-History" Required="0" Valid="1">
+        <Description Translatable="1">Shows a link in the menu to access the history of a change in the its zoom view of the agent interface.</Description>
+        <Navigation>Frontend::Agent::PaS::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::PaS::MenuGeneric</Item>
+                <Item Key="Name" Translatable="1">History</Item>
+                <Item Key="Description" Translatable="1">History</Item>
+                <Item Key="Action">AgentPaSHistory</Item>
+                <Item Key="Link">Action=AgentPaSHistory;PaSID=[% Data.PaSID | html %]</Item>
+                <Item Key="Target">PopUp</Item>
+                <Item Key="PopupType"></Item>
+                <Item Key="ClusterName" Translatable="1"></Item>
+                <Item Key="ClusterPriority"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="PaS::Frontend::MenuModule###030-Link" Required="0" Valid="1">
+        <Description Translatable="1">Shows a link in the menu that allows linking a change with another object in the change zoom view of the agent interface.</Description>
+        <Navigation>Frontend::Agent::PaS::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::PaS::MenuGeneric</Item>
+                <Item Key="Name" Translatable="1">Link</Item>
+                <Item Key="Description" Translatable="1">Link another object to the change</Item>
+                <Item Key="Action">AgentLinkObject</Item>
+                <Item Key="Link">Action=AgentLinkObject;SourceObject=PaS;SourceKey=[% Data.PaSID | html %]</Item>
+                <Item Key="Target">PopUp</Item>
+                <Item Key="PopupType"></Item>
+                <Item Key="ClusterName" Translatable="1"></Item>
+                <Item Key="ClusterPriority"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="PaS::Frontend::MenuModule###040-Edit" Required="0" Valid="1">
+        <Description Translatable="1">Shows a link in the menu to edit a change in the its zoom view of the agent interface.</Description>
+        <Navigation>Frontend::Agent::PaS::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::PaS::MenuGeneric</Item>
+                <Item Key="Name" Translatable="1">Edit</Item>
+                <Item Key="Description" Translatable="1">Edit the change</Item>
+                <Item Key="Action">AgentPaSEdit</Item>
+                <Item Key="Link">Action=AgentPaSEdit;PaSID=[% Data.PaSID | html %]</Item>
+                <Item Key="Target">PopUp</Item>
+                <Item Key="PopupType"></Item>
+                <Item Key="ClusterName" Translatable="1"></Item>
+                <Item Key="ClusterPriority"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="PaS::Frontend::MenuModule###050-Print" Required="0" Valid="1">
+        <Description Translatable="1">Shows a link in the menu to edit a change in the its zoom view of the agent interface.</Description>
+        <Navigation>Frontend::Agent::PaS::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::PaS::MenuGeneric</Item>
+                <Item Key="Name" Translatable="1">Print</Item>
+                <Item Key="Description" Translatable="1">Print the change</Item>
+                <Item Key="Action">AgentPaSPrint</Item>
+                <Item Key="Link">Action=AgentPaSPrint;PaSID=[% Data.PaSID | html %]</Item>
+                <Item Key="Target">PopUp</Item>
+                <Item Key="PopupType"></Item>
+                <Item Key="ClusterName" Translatable="1"></Item>
+                <Item Key="ClusterPriority"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="PaS::Frontend::MenuModule###060-Question" Required="0" Valid="1">
+        <Description Translatable="1">Shows a link in the menu to edit a change in the its zoom view of the agent interface.</Description>
+        <Navigation>Frontend::Agent::PaS::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::PaS::MenuGeneric</Item>
+                <Item Key="Name" Translatable="1">Add Question</Item>
+                <Item Key="Description" Translatable="1">Add Question</Item>
+                <Item Key="Action">AgentPaSFieldAdd</Item>
+                <Item Key="Link">Action=AgentPaSFieldAdd;PaSID=[% Data.PaSID | html %]</Item>
+                <Item Key="Target">Back</Item>
+                <Item Key="PopupType"></Item>
+                <Item Key="ClusterName" Translatable="1"></Item>
+                <Item Key="ClusterPriority"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+
+    <Setting Name="PaS::Frontend::MenuModule###070-Delete" Required="1" Valid="1">
+        <Description Translatable="1">Shows a link in the menu to delete a configuration item in its zoom view of the agent interface.</Description>
+        <Navigation>Frontend::Agent::PaS::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::PaS::MenuGeneric</Item>
+                <Item Key="Name" Translatable="1">Delete</Item>
+                <Item Key="Description" Translatable="1">Delete this PaS</Item>
+                <Item Key="Action">AgentPaSDelete</Item>
+                <Item Key="Link">Action=AgentPaSDelete;PaSID=[% Data.PaSID | html %]</Item>
+                <Item Key="Target">ConfirmDialog</Item>
+                <Item Key="ElementSelector">#Menu[% Data.MenuID | html %]</Item>
+                <Item Key="DialogContentQueryString">Action=AgentPaSDelete;PaSID=[% Data.PaSID | html %]</Item>
+                <Item Key="ConfirmedActionQueryString">Action=AgentPaSDelete;Subaction=Delete;PaSID=[% Data.PaSID | html %]</Item>
+                <Item Key="DialogTitle">[% Translate("Delete") | html %] [% Config("PaS::Hook") %] [% Data.PaSNumber | html %]</Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="PaS::Frontend::AgentPaSEdit###DynamicField" Required="0" Valid="1">
+        <Description Translatable="1">Dynamic fields shown in the change edit screen of the agent interface.</Description>
+        <Navigation>Frontend::Agent::View::ViewPaSEdit</Navigation>
+        <Value>
+            <Hash>
+                <DefaultItem ValueType="Select">
+                    <Item ValueType="Option" Value="0" Translatable="1">0 - Disabled</Item>
+                    <Item ValueType="Option" Value="1" Translatable="1">1 - Enabled</Item>
+                    <Item ValueType="Option" Value="2" Translatable="1">2 - Enabled and required</Item>
+                </DefaultItem>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="Events###PaS" Required="0" Valid="1">
+        <Description Translatable="1">List of all PaS events to be displayed in the GUI.</Description>
+        <Navigation>Frontend::Admin</Navigation>
+        <Value>
+            <Array>
+                <Item>PaSAddPre</Item>
+                <Item>PaSAddPost</Item>
+                <Item>PaSUpdatePre</Item>
+                <Item>PaSUpdatePost</Item>                
+                <Item>PaSAttachmentAddPost</Item>
+                <Item>PaSAttachmentDeletePost</Item>
+            </Array>
+        </Value>
+    </Setting>
+
+    <Setting Name="Frontend::Module###AgentPaSHistory" Required="0" Valid="1">
+	    <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+	    <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+	    <Value>
+	        <Item ValueType="FrontendRegistration">
+	            <Hash>
+	                <Item Key="GroupRo">
+	                    <Array>
+	                    </Array>
+	                </Item>
+	                <Item Key="Group">
+	                    <Array>
+	                        <Item>admin</Item>
+	                    </Array>
+	                </Item>
+	                <Item Key="Description" Translatable="1">PaS Hsitory</Item>
+	                <Item Key="Title" Translatable="1">History</Item>
+	                <Item Key="NavBarName">PaS</Item>
+	            </Hash>
+	        </Item>
+	    </Value>
+	</Setting>
+
+	<Setting Name="Frontend::Module###AgentPaSHistoryZoom" Required="0" Valid="1">
+	    <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+	    <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+	    <Value>
+	        <Item ValueType="FrontendRegistration">
+	            <Hash>
+	                <Item Key="GroupRo">
+	                    <Array>
+	                    </Array>
+	                </Item>
+	                <Item Key="Group">
+	                    <Array>
+	                        <Item>admin</Item>
+	                    </Array>
+	                </Item>
+	                <Item Key="Description" Translatable="1">Details of a change history entry</Item>
+	                <Item Key="Title" Translatable="1">HistoryZoom</Item>
+	                <Item Key="NavBarName">PaS</Item>
+	            </Hash>
+	        </Item>
+	    </Value>
+	</Setting>
+
+	<Setting Name="PaS::EventModule###01-HistoryAdd" Required="0" Valid="1">
+        <Description Translatable="1">PaS event module that updates the history of changes.</Description>
+        <Navigation>Core::PaS::Event</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::System::PaS::Event::HistoryAdd</Item>
+                <Item Key="Event"></Item>
+                <Item Key="Transaction">0</Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="PaS::Frontend::HistoryOrder" Required="1" Valid="1">
+        <Description Translatable="1">Shows the change history (reverse ordered) in the agent interface.</Description>
+        <Navigation>Frontend::Agent::ViewHistory</Navigation>
+        <Value>
+            <Item ValueType="Select" SelectedID="normal">
+                <Item ValueType="Option" Value="reverse" Translatable="1">reverse</Item>
+                <Item ValueType="Option" Value="normal" Translatable="1">normal</Item>
+            </Item>
+        </Value>
+    </Setting>
+
+    <Setting Name="PaS::Frontend::AgentPaSPrint###DynamicField" Required="0" Valid="1">
+        <Description Translatable="1">Dynamic fields shown in the change edit screen of the agent interface.</Description>
+        <Navigation>Frontend::Agent::View::ViewPaSEdit</Navigation>
+        <Value>
+            <Hash>
+                <DefaultItem ValueType="Select">
+                    <Item ValueType="Option" Value="0" Translatable="1">0 - Disabled</Item>
+                    <Item ValueType="Option" Value="1" Translatable="1">1 - Enabled</Item>
+                    <Item ValueType="Option" Value="2" Translatable="1">2 - Enabled and required</Item>
+                </DefaultItem>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="Frontend::Module###AgentPaSPrint" Required="0" Valid="1">
+	    <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+	    <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+	    <Value>
+	        <Item ValueType="FrontendRegistration">
+	            <Hash>
+	                <Item Key="GroupRo">
+	                    <Array>
+	                    </Array>
+	                </Item>
+	                <Item Key="Group">
+	                    <Array>
+	                        <Item>admin</Item>
+	                    </Array>
+	                </Item>
+	                <Item Key="Description" Translatable="1">Print</Item>
+	                <Item Key="Title" Translatable="1">HistoryZoom</Item>
+	                <Item Key="NavBarName">PaS</Item>
+	            </Hash>
+	        </Item>
+	    </Value>
+	</Setting>
+
+	<Setting Name="PaS::Hook" Required="1" Valid="1">
+        <Description Translatable="1">The identifier for a change, e.g. Change#, MyChange#. The default is Change#.</Description>
+        <Navigation>Core::PaS</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">PaS#</Item>
+        </Value>
+    </Setting>
+
+    <Setting Name="PaS::Frontend::AgentPaSHistory###DynamicField" Required="0" Valid="1">
+        <Description Translatable="1">Dynamic fields shown in the change edit screen of the agent interface.</Description>
+        <Navigation>Frontend::Agent::View::AgentPaSHistory</Navigation>
+        <Value>
+            <Hash>
+                <DefaultItem ValueType="Select">
+                    <Item ValueType="Option" Value="0" Translatable="1">0 - Disabled</Item>
+                    <Item ValueType="Option" Value="1" Translatable="1">1 - Enabled</Item>
+                    <Item ValueType="Option" Value="2" Translatable="1">2 - Enabled and required</Item>
+                </DefaultItem>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="Frontend::Module###AgentPaS" Required="0" Valid="1">
+	    <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+	    <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+	    <Value>
+	        <Item ValueType="FrontendRegistration">
+	            <Hash>
+	                <Item Key="GroupRo">
+	                    <Array>
+	                    </Array>
+	                </Item>
+	                <Item Key="Group">
+	                    <Array>
+	                        <Item>admin</Item>
+	                    </Array>
+	                </Item>
+	                <Item Key="Description" Translatable="1">A PaS Module.</Item>
+	                <Item Key="Title" Translatable="1">PaS</Item>
+	                <Item Key="NavBarName">PaS</Item>
+	            </Hash>
+	        </Item>
+	    </Value>
+	</Setting>
+	<Setting Name="Loader::Module::AgentPaSEdit###002-Ticket" Required="0" Valid="1">
+	    <Description Translatable="1">Loader module registration for the agent interface.</Description>
+	    <Navigation>Frontend::Admin::ModuleRegistration::Loader</Navigation>
+	    <Value>
+	        <Hash>
+	            <Item Key="CSS">
+	                <Array>
+	                    <Item></Item>
+	                </Array>
+	            </Item>
+	            <Item Key="JavaScript">
+	                <Array>
+	                    <Item>PaS.Agent.Default.css</Item>
+	                </Array>
+	            </Item>
+	        </Hash>
+	    </Value>
+	</Setting>
+
+	<Setting Name="Frontend::Module###AgentPaSFieldAdd" Required="0" Valid="1">
+	    <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+	    <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+	    <Value>
+	        <Item ValueType="FrontendRegistration">
+	            <Hash>
+	                <Item Key="GroupRo">
+	                    <Array>
+	                    </Array>
+	                </Item>
+	                <Item Key="Group">
+	                    <Array>
+	                        <Item>admin</Item>
+	                    </Array>
+	                </Item>
+	                <Item Key="Description" Translatable="1">A PaS Module.</Item>
+	                <Item Key="Title" Translatable="1">PaS</Item>
+	                <Item Key="NavBarName">PaS</Item>
+	            </Hash>
+	        </Item>
+	    </Value>
+	</Setting>
+
+	<Setting Name="DynamicFields::ObjectType###Question" Required="0" Valid="1">
+        <Description Translatable="1">DynamicField object registration.</Description>
+        <Navigation>Core::DynamicFields::ObjectTypeRegistration</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="DisplayName" Translatable="1">Question</Item>
+                <Item Key="Module">Kernel::System::DynamicField::ObjectType::Question</Item>
+                <Item Key="Prio">200</Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+	 <Setting Name="Question::Frontend::AgentPaSFieldAdd###DynamicField" Required="0" Valid="1">
+        <Description Translatable="1">Dynamic fields shown in the change edit screen of the agent interface.</Description>
+        <Navigation>Frontend::Agent::View::AgentPaSFieldAdd</Navigation>
+        <Value>
+            <Hash>
+                <DefaultItem ValueType="Select">
+                    <Item ValueType="Option" Value="0" Translatable="1">0 - Disabled</Item>
+                    <Item ValueType="Option" Value="1" Translatable="1">1 - Enabled</Item>
+                    <Item ValueType="Option" Value="2" Translatable="1">2 - Enabled and required</Item>
+                </DefaultItem>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="Frontend::Module###AgentPaSFieldZoom" Required="0" Valid="1">
+	    <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+	    <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+	    <Value>
+	        <Item ValueType="FrontendRegistration">
+	            <Hash>
+	                <Item Key="GroupRo">
+	                    <Array>
+	                    </Array>
+	                </Item>
+	                <Item Key="Group">
+	                    <Array>
+	                        <Item>admin</Item>
+	                    </Array>
+	                </Item>
+	                <Item Key="Description" Translatable="1">A PaS Module.</Item>
+	                <Item Key="Title" Translatable="1">PaS</Item>
+	                <Item Key="NavBarName">PaS</Item>
+	            </Hash>
+	        </Item>
+	    </Value>
+	</Setting>
+
+	<Setting Name="Question::Frontend::AgentPaSFieldZoom###DynamicField" Required="0" Valid="1">
+        <Description Translatable="1">Dynamic fields shown in the change edit screen of the agent interface.</Description>
+        <Navigation>Frontend::Agent::View::AgentPaSFieldZoom</Navigation>
+        <Value>
+            <Hash>
+                <DefaultItem ValueType="Select">
+                    <Item ValueType="Option" Value="0" Translatable="1">0 - Disabled</Item>
+                    <Item ValueType="Option" Value="1" Translatable="1">1 - Enabled</Item>
+                    <Item ValueType="Option" Value="2" Translatable="1">2 - Enabled and required</Item>
+                </DefaultItem>
+            </Hash>
+        </Value>
+    </Setting>
+
+
+    <Setting Name="Question::Frontend::MenuModule###010-Back" Required="0" Valid="1">
+        <Description Translatable="1">Shows a link in the menu to go back in the change zoom view of the agent interface.</Description>
+        <Navigation>Frontend::Agent::Question::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::Question::MenuGeneric</Item>
+                <Item Key="Name" Translatable="1">Back</Item>
+                <Item Key="Description" Translatable="1">Go back</Item>
+                <Item Key="Action">AgentPaSFieldZoom</Item>
+                <Item Key="Link">Action=AgentPaSFieldZoom</Item>
+                <Item Key="Target">Back</Item>
+                <Item Key="PopupType"></Item>
+                <Item Key="ClusterName" Translatable="1"></Item>
+                <Item Key="ClusterPriority"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+
+    <Setting Name="Question::Frontend::MenuModule###020-Edit" Required="0" Valid="1">
+        <Description Translatable="1">Shows a link in the menu to edit a change in the its zoom view of the agent interface.</Description>
+        <Navigation>Frontend::Agent::Question::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::Question::MenuGeneric</Item>
+                <Item Key="Name" Translatable="1">Edit</Item>
+                <Item Key="Description" Translatable="1">Edit the change</Item>
+                <Item Key="Action">AgentPaSEdit</Item>
+                <Item Key="Link">Action=AgentPaSEdit;PaSID=[% Data.PaSID | html %]</Item>
+                <Item Key="Target">PopUp</Item>
+                <Item Key="PopupType"></Item>
+                <Item Key="ClusterName" Translatable="1"></Item>
+                <Item Key="ClusterPriority"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="Question::Frontend::MenuModule###030-Delete" Required="1" Valid="1">
+        <Description Translatable="1">Shows a link in the menu to delete a configuration item in its zoom view of the agent interface.</Description>
+        <Navigation>Frontend::Agent::Question::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::Question::MenuGeneric</Item>
+                <Item Key="Name" Translatable="1">Delete</Item>
+                <Item Key="Description" Translatable="1">Delete this Question</Item>
+                <Item Key="Action">AgentQuestionDelete</Item>
+                <Item Key="Link">Action=AgentQuestionDelete;QuestionID=[% Data.QuestionID | html %]</Item>
+                <Item Key="Target">ConfirmDialog</Item>
+                <Item Key="ElementSelector">#Menu[% Data.MenuID | html %]</Item>
+                <Item Key="DialogContentQueryString">AAction=AgentQuestionDelete;QuestionID=[% Data.QuestionID | html %]</Item>
+                <Item Key="ConfirmedActionQueryString">Action=AgentQuestionDelete;Subaction=Delete;QuestionID=[% Data.QuestionID | html %]</Item>
+                <Item Key="DialogTitle">[% Translate("Delete") | html %] [% Config("Question::Hook") %] [% Data.QuestionNumber | html %]</Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="Frontend::Module###AgentPaSFieldEdit" Required="0" Valid="1">
+	    <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+	    <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+	    <Value>
+	        <Item ValueType="FrontendRegistration">
+	            <Hash>
+	                <Item Key="GroupRo">
+	                    <Array>
+	                    </Array>
+	                </Item>
+	                <Item Key="Group">
+	                    <Array>
+	                        <Item>admin</Item>
+	                    </Array>
+	                </Item>
+	                <Item Key="Description" Translatable="1">A PaS Module.</Item>
+	                <Item Key="Title" Translatable="1">PaS</Item>
+	                <Item Key="NavBarName">PaS</Item>
+	            </Hash>
+	        </Item>
+	    </Value>
+	</Setting>
+
+	<Setting Name="Question::Frontend::AgentPaSFieldEdit###DynamicField" Required="0" Valid="1">
+        <Description Translatable="1">Dynamic fields shown in the change edit screen of the agent interface.</Description>
+        <Navigation>Frontend::Agent::View::AgentPaSFieldEdit</Navigation>
+        <Value>
+            <Hash>
+                <DefaultItem ValueType="Select">
+                    <Item ValueType="Option" Value="0" Translatable="1">0 - Disabled</Item>
+                    <Item ValueType="Option" Value="1" Translatable="1">1 - Enabled</Item>
+                    <Item ValueType="Option" Value="2" Translatable="1">2 - Enabled and required</Item>
+                </DefaultItem>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="Frontend::Module###AgentPaSFieldDelete" Required="0" Valid="1">
+	    <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+	    <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+	    <Value>
+	        <Item ValueType="FrontendRegistration">
+	            <Hash>
+	                <Item Key="GroupRo">
+	                    <Array>
+	                    </Array>
+	                </Item>
+	                <Item Key="Group">
+	                    <Array>
+	                        <Item>admin</Item>
+	                    </Array>
+	                </Item>
+	                <Item Key="Description" Translatable="1">A PaS Module.</Item>
+	                <Item Key="Title" Translatable="1">PaS</Item>
+	                <Item Key="NavBarName">PaS</Item>
+	            </Hash>
+	        </Item>
+	    </Value>
+	</Setting>
+
+	<Setting Name="Loader::Module::AgentPaSFieldAdd###002-Ticket" Required="0" Valid="1">
+		<Description Translatable="1">Loader module registration for the agent interface.</Description>
+		<Navigation>Frontend::Admin::ModuleRegistration::Loader</Navigation>
+		<Value>
+		    <Hash>
+		        <Item Key="CSS">
+		            <Array>
+		                <Item></Item>
+		            </Array>
+		        </Item>
+		        <Item Key="JavaScript">
+		            <Array>
+		                <Item>Custom.Agent.PaSFieldAdd.js</Item>
+		            </Array>
+		        </Item>
+		    </Hash>
+		</Value>
+	</Setting>
+
+	<Setting Name="Loader::Module::AgentPaSFieldEdit###002-Ticket" Required="0" Valid="1">
+		<Description Translatable="1">Loader module registration for the agent interface.</Description>
+		<Navigation>Frontend::Admin::ModuleRegistration::Loader</Navigation>
+		<Value>
+		    <Hash>
+		        <Item Key="CSS">
+		            <Array>
+		                <Item></Item>
+		            </Array>
+		        </Item>
+		        <Item Key="JavaScript">
+		            <Array>
+		                <Item>Custom.Agent.PaSFieldEdit.js</Item>
+		            </Array>
+		        </Item>
+		    </Hash>
+		</Value>
+	</Setting>
+
+	<Setting Name="Loader::Module::AgentPaSFieldZoom###002-Ticket" Required="0" Valid="1">
+		<Description Translatable="1">Loader module registration for the agent interface.</Description>
+		<Navigation>Frontend::Admin::ModuleRegistration::Loader</Navigation>
+		<Value>
+		    <Hash>
+		        <Item Key="CSS">
+		            <Array>
+		                <Item></Item>
+		            </Array>
+		        </Item>
+		        <Item Key="JavaScript">
+		            <Array>
+		                <Item>Question.Agent.QuestionZoom.js</Item>
+		                <Item>Question.Agent.ConfirmationDialog.js</Item>
+		            </Array>
+		        </Item>
+		    </Hash>
+		</Value>
+	</Setting>
+
+	 <Setting Name="LinkObject::PossibleLink###3429" Required="0" Valid="1">
+        <Description Translatable="1">This setting defines that a 'PaS' object can be linked with 'Question' objects using the 'Normal' link type.</Description>
+        <Navigation>Core::LinkObject</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Object1">PaS</Item>
+                <Item Key="Object2">Question</Item>
+                <Item Key="Type">Normal</Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+
+     <Setting Name="CustomerFrontend::Module###CustomerPaSZoom" Required="0" Valid="1">
+        <Description Translatable="1">Frontend module registration for the customer interface.</Description>
+        <Navigation>Frontend::Customer::ModuleRegistration</Navigation>
+        <Value>
+            <Item ValueType="FrontendRegistration">
+                <Hash>
+                    <Item Key="Group">
+                        <Array>
+                        </Array>
+                    </Item>
+                    <Item Key="GroupRo">
+                        <Array>
+                        </Array>
+                    </Item>
+                    <Item Key="Description">CustomerPaSZoom</Item>
+                    <Item Key="Title"></Item>
+                    <Item Key="NavBarName">CustomerPaSZoom</Item>
+                </Hash>
+            </Item>
+        </Value>
+    </Setting>
+
+    <Setting Name="Loader::Module::CustomerPaSZoom###002-CustomerPaSZoom" Required="0" Valid="1">
+        <Description Translatable="1">Loader module registration for the customer interface.</Description>
+        <Navigation>Frontend::Customer::ModuleRegistration::Loader</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="CSS">
+                    <Array>
+                        <Item></Item>
+                        
+                    </Array>
+                </Item>
+                <Item Key="JavaScript">
+                    <Array>
+                        <Item>PaS.Agent.ConfirmationDialog.js</Item>
+                        <Item>PaS.Agent.PaSZoom.js</Item>
+                        <Item>Custom.Agent.PaSZoom.TimelineView.js</Item>
+                    </Array>
+                </Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <!-- CustomerPasEdit Start -->
+	<Setting Name="Frontend::Module###CustomerPaSEdit" Required="0" Valid="1">
+		<Description Translatable="1">Frontend module registration for the agent interface.</Description>
+		<Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+		<Value>
+		    <Item ValueType="FrontendRegistration">
+		        <Hash>
+		            <Item Key="GroupRo">
+		                <Array>
+		                </Array>
+		            </Item>
+		            <Item Key="Group">
+		                <Array>
+		                    <Item>admin</Item>
+		                </Array>
+		            </Item>
+		            <Item Key="Description" Translatable="1">PaS Edit</Item>
+		            <Item Key="Title" Translatable="1">Edit</Item>
+		            <Item Key="NavBarName">PaS</Item>
+		        </Hash>
+		    </Item>
+		</Value>
+	</Setting>
+	<Setting Name="Loader::Module::CustomerPaSEdit###002-Ticket" Required="0" Valid="1">
+		<Description Translatable="1">Loader module registration for the agent interface.</Description>
+		<Navigation>Frontend::Admin::ModuleRegistration::Loader</Navigation>
+		<Value>
+		    <Hash>
+		        <Item Key="CSS">
+		            <Array>
+		                <Item></Item>
+		            </Array>
+		        </Item>
+		        <Item Key="JavaScript">
+		            <Array>
+		                <Item>PaS.Agent.ConfirmationDialog.js</Item>
+		                <Item>PaS.Agent.PaSZoom.js</Item>
+		                <Item>Custom.Agent.PaSZoom.TimelineView.js</Item>
+		            </Array>
+		        </Item>
+		    </Hash>
+		</Value>
+	</Setting>
+
+	<!-- CustomerPasEdit End -->
+
+	<Setting Name="CustomerFrontend::Module###CustomerPaSDataEdit" Required="0" Valid="1">
+		<Description Translatable="1">Frontend module registration for the agent interface.</Description>
+		<Navigation>Frontend::Admin::ModuleRegistration</Navigation>
+		<Value>
+		    <Item ValueType="FrontendRegistration">
+		        <Hash>
+		            <Item Key="GroupRo">
+		                <Array>
+		                </Array>
+		            </Item>
+		            <Item Key="Group">
+		                <Array>
+		                    <Item>admin</Item>
+		                </Array>
+		            </Item>
+		            <Item Key="Description" Translatable="1">PaS Edit</Item>
+		            <Item Key="Title" Translatable="1">Edit</Item>
+		            <Item Key="NavBarName">PaS</Item>
+		        </Hash>
+		    </Item>
+		</Value>
+	</Setting>
+	<Setting Name="Loader::Module::CustomerPaSDataEdit###002-Ticket" Required="0" Valid="1">
+		<Description Translatable="1">Loader module registration for the agent interface.</Description>
+		<Navigation>Frontend::Admin::ModuleRegistration::Loader</Navigation>
+		<Value>
+		    <Hash>
+		        <Item Key="CSS">
+		            <Array>
+		                <Item></Item>
+		            </Array>
+		        </Item>
+		        <Item Key="JavaScript">
+		            <Array>
+		                <Item>PaS.Agent.ConfirmationDialog.js</Item>
+		                <Item>PaS.Agent.PaSZoom.js</Item>
+		                <Item>Custom.Agent.PaSZoom.TimelineView.js</Item>
+		            </Array>
+		        </Item>
+		    </Hash>
+		</Value>
+	</Setting>
+
+
+    <Setting Name="CustomerFrontend::Module###CustomerCheckout" Required="0" Valid="1">
+        <Description Translatable="1">Frontend module registration for the customer interface.</Description>
+        <Navigation>Frontend::Customer::ModuleRegistration</Navigation>
+        <Value>
+            <Item ValueType="FrontendRegistration">
+                <Hash>
+                    <Item Key="Group">
+                        <Array>
+                        </Array>
+                    </Item>
+                    <Item Key="GroupRo">
+                        <Array>
+                        </Array>
+                    </Item>
+                    <Item Key="Description">CustomerCheckout</Item>
+                    <Item Key="Title"></Item>
+                    <Item Key="NavBarName">CustomerCheckout</Item>
+                </Hash>
+            </Item>
+        </Value>
+    </Setting>
+
+    <Setting Name="Loader::Module::CustomerCheckout###002-CustomerCheckout" Required="0" Valid="1">
+        <Description Translatable="1">Loader module registration for the customer interface.</Description>
+        <Navigation>Frontend::Customer::ModuleRegistration::Loader</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="CSS">
+                    <Array>
+                        <Item></Item>
+                        
+                    </Array>
+                </Item>
+                <Item Key="JavaScript">
+                    <Array>
+                        <Item>PaS.Agent.ConfirmationDialog.js</Item>
+                        <Item>PaS.Agent.PaSZoom.js</Item>
+                        <Item>Custom.Agent.PaSZoom.TimelineView.js</Item>
+                    </Array>
+                </Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="CustomerFrontend::Module###CustomerCheckout" Required="0" Valid="1">
+        <Description Translatable="1">Frontend module registration for the customer interface.</Description>
+        <Navigation>Frontend::Customer::ModuleRegistration</Navigation>
+        <Value>
+            <Item ValueType="FrontendRegistration">
+                <Hash>
+                    <Item Key="Group">
+                        <Array>
+                        </Array>
+                    </Item>
+                    <Item Key="GroupRo">
+                        <Array>
+                        </Array>
+                    </Item>
+                    <Item Key="Description">CustomerCheckout</Item>
+                    <Item Key="Title"></Item>
+                    <Item Key="NavBarName">CustomerCheckout</Item>
+                </Hash>
+            </Item>
+        </Value>
+    </Setting>
+
+    <Setting Name="Ticket::Frontend::CustomerCheckout###SenderType" Required="1" Valid="1">
+        <Description Translatable="1">Sender type for new tickets from the customer inteface.</Description>
+        <Navigation>Frontend::Customer::View::TicketMessage</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">customer</Item>
+        </Value>
+    </Setting>
+
+    <Setting Name="Ticket::Frontend::CustomerCheckout###HistoryType" Required="1" Valid="1">
+        <Description Translatable="1">Defines the default history type in the customer interface.</Description>
+        <Navigation>Frontend::Customer::View::TicketMessage</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">WebRequestCustomer</Item>
+        </Value>
+    </Setting>
+
+     <Setting Name="Ticket::Frontend::CustomerCheckout###HistoryComment" Required="1" Valid="1">
+        <Description Translatable="1">Comment for new history entries in the customer interface.</Description>
+        <Navigation>Frontend::Customer::View::TicketMessage</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex=""></Item>
+        </Value>
+    </Setting>
+
+
+    <Setting Name="Ticket::Frontend::CustomerPaSZoom###QueueDefault" Required="0" Valid="0">
+        <Description Translatable="1">Defines the default queue for new customer tickets in the customer interface.</Description>
+        <Navigation>Frontend::Customer::View::TicketMessage</Navigation>
+        <Value>
+            <Item ValueType="Entity" ValueEntityType="Queue" ValueRegex="">Postmaster</Item>
+        </Value>
+    </Setting>
+
+    <Setting Name="Ticket::Frontend::CustomerPaSZoom###PriorityDefault" Required="1" Valid="1">
+        <Description Translatable="1">Defines the default priority of new customer tickets in the customer interface.</Description>
+        <Navigation>Frontend::Customer::View::TicketMessage</Navigation>
+        <Value>
+            <Item ValueType="Entity" ValueEntityType="Priority" ValueRegex="">3 normal</Item>
+        </Value>
+    </Setting>
+
+
+    <Setting Name="Ticket::Frontend::CustomerPaSZoom###SenderType" Required="1" Valid="1">
+        <Description Translatable="1">Sender type for new tickets from the customer inteface.</Description>
+        <Navigation>Frontend::Customer::View::TicketMessage</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">customer</Item>
+        </Value>
+    </Setting>
+
+    <Setting Name="Ticket::Frontend::CustomerPaSZoom###HistoryType" Required="1" Valid="1">
+        <Description Translatable="1">Defines the default history type in the customer interface.</Description>
+        <Navigation>Frontend::Customer::View::TicketMessage</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">WebRequestCustomer</Item>
+        </Value>
+    </Setting>
+
+     <Setting Name="Ticket::Frontend::CustomerPaSZoom###HistoryComment" Required="1" Valid="1">
+        <Description Translatable="1">Comment for new history entries in the customer interface.</Description>
+        <Navigation>Frontend::Customer::View::TicketMessage</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex=""></Item>
+        </Value>
+    </Setting>
+
+    <Setting Name="Ticket::Frontend::CustomerPaSZoom###StateDefault" Required="1" Valid="1">
+        <Description Translatable="1">Defines the default state of new customer tickets in the customer interface.</Description>
+        <Navigation>Frontend::Customer::View::TicketMessage</Navigation>
+        <Value>
+            <Item ValueType="Entity" ValueEntityType="State" ValueRegex="">New</Item>
+        </Value>
+    </Setting>
+
+
+</otobo_config>

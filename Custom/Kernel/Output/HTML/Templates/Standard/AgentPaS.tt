@@ -1,0 +1,115 @@
+# --
+# Copyright (C) 2001-2015 OTRS AG, http://otrs.com/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+[% RenderBlockStart( "Overview" ) %]
+<div class="MainBox ARIARoleMain LayoutFixedSidebar SidebarFirst">
+    <h1 class="InvisibleText">[% Translate("PaS Management") | html %]</h1>
+
+    [% BreadcrumbPath = [
+            {
+                Name => Translate('PaS Management'),
+                Link => Env("Action"),
+            },
+        ]
+    %]
+
+    [% SWITCH Data.Action %]
+        [% CASE 'Add' %]
+            [% BreadcrumbPath.push({ Name => Translate("Add Attachment"),}) %]
+        [% CASE 'Change' %]
+            [% USE EditTitle = String(Translate("Edit Attachment")) %]
+            [% BreadcrumbPath.push({ Name => EditTitle.append( ': ', Data.Name ) }) %]
+    [% END %]
+
+    [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
+
+
+    <div class="SidebarColumn">
+
+[% RenderBlockStart("ActionList") %]
+        <div class="WidgetSimple">
+            <div class="section-content Content">
+              <div class="section-data wrap">
+                 <ul class="ActionList">
+                    [% RenderBlockStart("ActionSearch") %]
+                    <li>
+                       <form class="SearchBox" action="[% Env("CGIHandle") %]" method="post">
+                       <input type="hidden" name="Action" value="[% Env("Action") %]"/>
+                       <input type="hidden" name="Subaction" value=""/>
+                       <input type="hidden" name="Nav" value="[% Data.Nav | html %]"/>
+                       <input type="text" name="Search" value="[% Data.Search | html %]" id="Search" title="[% Translate("Search") | html %]"/>
+                       <button type="submit" value="[% Translate("Search") | html %]" title="[% Translate("Search") | html %]"><i class="fa fa-search"></i></button>
+                       </form>
+                       <p class="FieldExplanation">
+                          [% Translate("Wildcards like '*' are allowed.") | html %]
+                       </p>
+                    </li>
+                    [% RenderBlockEnd("ActionSearch") %]
+                 </ul>
+              </div>
+           </div>
+        </div>
+    </div>
+[% RenderBlockEnd("ActionList") %]
+    <div class="ContentColumn">
+        <div class="WidgetSimple">
+            [% RenderBlockStart("OverviewResult") %]
+            <div class="Header">
+                <h2>[% Translate("List") | html %]</h2>
+            </div>
+            <div class="Content">
+
+                <table class="DataTable" id="Attachments">
+                    <thead>
+                        <tr>
+        
+
+                            <th>[% Translate("ID") | html %]</th>
+                            <th>[% Translate("Title") | html %]</th>
+                            <th>[% Translate("Changed") | html %]</th>
+                            <th>[% Translate("Created") | html %]</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+[% RenderBlockStart("NoDataFoundMsg") %]
+                        <tr>
+                            <td colspan="7">
+                                [% Translate("No data found.") | html %]
+                            </td>
+                        </tr>
+[% RenderBlockEnd("NoDataFoundMsg") %]
+[% RenderBlockStart("OverviewResultRow") %]
+                        <tr class="MasterAction[% IF Data.ValidID && Data.ValidID != 1 %] Invalid[% END %]">
+                         <td><a class="AsBlock MasterActionLink" href="[% Env("Baselink") %]Action=AgentPaSZoom;PaSID=[% Data.PaSID | uri %]">[% Data.PaSNumber | truncate(20) | html %]</a></td>
+                         <td>[% Data.DynamicField_PasTitle | html %]</td>
+                         <td>[% Data.ChangeTime | Localize("TimeShort") %]</td>
+                         <td>[% Data.CreateTime | Localize("TimeShort") %]</td>
+                      </tr>
+[% RenderBlockEnd("OverviewResultRow") %]
+                        <tr class="FilterMessage Hidden">
+                            <td colspan="7">[% Translate("No matches found.") | html %]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+[% RenderBlockEnd("OverviewResult") %]
+</div>
+</div>
+</div>
+
+<!-- End Layer Content -->
+[% WRAPPER JSOnDocumentComplete %]
+<script type="text/javascript">
+   $( document ).ready( function() {
+       $( '#nav-Admin' ).removeClass( 'Selected' );
+       $( '#nav-PaS' ).addClass( 'Selected' );
+   } );
+</script>
+[% END %]
+[% RenderBlockEnd( "Overview" ) %]

@@ -1,0 +1,423 @@
+# --
+# Copyright (C) 2001-2015 OTRS AG, http://otrs.com/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+<style type="text/css">
+   .custom-line {
+      border-style: solid; /* Specify the border style */
+      border-width: 1px; /* Specify the border width */
+      border-color: black; /* Specify the border color */
+      /* You can also specify other properties like width and margin */
+   }
+   .Container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .Sub_Container{
+        display: flex;
+        flex: 0 0 calc(50% - 20px);
+        padding: 0px 10px 5px 10px !important;
+        margin: : 0% !important;
+        margin-left: 0% !important;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 66px
+    }
+    .InputField_Search,.InputField_Container,.InputField_InputContainer,.DynamicField_div{
+        width: 100% !important;
+    }
+    .Sub_Container>label{
+        width: 100% !important;
+        text-align: left !important;
+    }
+    fieldset.TableLike > .RichTextField {
+        margin-left: 1%;
+    }
+    .Sub_Container>input{
+        width: 100% !important;
+    }
+    .DynamicField_div>.W50pc,.DynamicField_div>textarea{
+        width: 100% !important
+    }
+    .out_div{
+        display: flex;
+        flex-direction: column;
+        margin-left: 1%;
+        margin-bottom: 1%;
+    }
+    .out_div>label{
+        margin-bottom: 0.5%;
+    }
+    .SpacingTop>button{
+        padding: 8px 43px 11px !important;
+        margin-left: 1% !important;
+    }
+    input{
+        border-radius: 4px;
+    }
+    #Subject{
+        width: 64.5%;
+    }
+    .custom_marker{
+        font-size: 18px;
+        font-weight: bold;
+        position: relative;
+        top: 0.35em;
+        line-height: 1px;
+        right: 2px;
+        left: auto;
+    }
+    @media only screen and (min-width: 0px) and (max-width: 1024px){
+        .Sub_Container {
+            display: flex;
+            flex: 0 0 calc(100% - 20px);
+        }
+    }
+    label {
+        font-size: 100% !important;
+    }
+     table{
+        width: 50%;
+        margin: 20px 0;
+        border-collapse: collapse;
+    }
+    table, th, td{
+        border: 1px solid #cdcdcd;
+    }
+    .addbutton {
+        width: 50px;
+        height: 25px;
+        border-radius: 14px;
+    }
+    .removebutton {
+        width: 50px;
+        height: 25px;
+        border-radius: 14px;
+    }
+</style>
+<div id="oooContent" class="ARIARoleMain TicketCompose">
+   <div id="oooHeader">
+        <h1>[% Translate(Data.ServiceRequestType) | html %]</h1>
+    </div>
+   <div id="oooMainBox" class="ContentColumn">
+      <form action="[% Env("CGIHandle") %]" method="post" name="compose" id="AddToCart" enctype="multipart/form-data" class="Validate PreventMultipleSubmits" onSubmit="return false;" >
+         <input type="hidden" name="Action" value="[% Env("Action") %]" />
+         <input type="hidden" name="Subaction" value="AddToCart" />
+         <input type="hidden" name="PaSID" value="[% Data.PaSID | html %]" />
+         <input type="hidden" name="ServiceRequestType" value="[% Data.ServiceRequestType | html %]" />
+         <input type="hidden" name="FormID" value="[% Data.FormID | html %]" />
+         <input type="hidden" id="Islocal" value="No" />
+         <input type="hidden" name="subtotal" value="[% Data.DynamicField_PaSCost %]" />
+        
+            [% RenderBlockStart("PaSDetails") %]
+                <h2>[% Translate(Data.PaSTitle) | html %]</h2>
+                <fieldset class="TableLike Container">
+                [% RenderBlockStart("Assets") %]
+                        <div class="Field  Sub_Container ">
+                        <label class="Mandatory" for="[% Data.Question %]">
+                           [% IF Data.Mandatory == 'Yes' %]
+                           *
+                           [% END %]
+                           [% Data.Question %]
+                        </label>
+                        [% IF Data.QuestionType == 'Free Text' %]
+                            <input type="text" class="DynamicFieldText W50pc  [% IF Data.Mandatory == 'Yes' %] Validate_Required [% END %]"  name="[% Data.Question %]" title="[% Data.Question %]" value="" >
+                        [% ELSIF Data.QuestionType == 'Radio Button' %]
+                            <div class="[% IF Data.Default == 'Yes'%] radio [% END %]">
+                               [% FOREACH key IN Data.Answer %]
+                               <label class="label-checkbox">[% key %] <input type="radio" name="[% Data.Question %]" value="[% key %]" class="[% IF Data.Mandatory == 'Yes' %] Validate_Required [% END %]" /></label>
+                               [% END %]
+                            </div>
+                        [% ELSIF Data.QuestionType == 'Checkbox' %]
+                            <div class="checkbox Field oooCheckboxContainer" >
+                               [% FOREACH key IN Data.Answer %]
+                               <label class="DynamicFieldCheckbox ">[% key %] <input type="checkbox" name="checkboxname" class="[% IF Data.Mandatory == 'Yes' %] Validate_Required [% END %]" value="[% key %]"  /></label>
+                               [% END %]
+                               <input type=hidden name="[% Data.Question %]" value="" \>
+                            </div>
+                        [% ELSIF Data.QuestionType == 'Dropdown' %]
+                            <select name="[% Data.Question %]" class=" DynamicFieldText Modernize  [% IF Data.Mandatory == 'Yes' %] Validate_Required [% END %]" id="[% IF Data.Default == 'Yes' %] default [% END %]">
+                               <option value=""></option>
+                               [% FOREACH key IN Data.Answer %]
+                               <option value="[% key %]">[% key %]</option>
+                               [% END %]
+                            </select>
+                        [% ELSIF Data.QuestionType == 'Multiselect' %]
+                            <select name="[% Data.Question %]" class=" DynamicFieldText Modernize  [% IF Data.Mandatory == 'Yes' %] Validate_Required [% END %]" id="[% IF Data.Default == 'Yes' %] default [% END %]" multiple="multiple">
+                               <option value=""></option>
+                               [% FOREACH key IN Data.Answer %]
+                               <option value="[% key %]">[% key %]</option>
+                               [% END %]
+                            </select>
+
+                        [% ELSIF Data.QuestionType == 'Alphanumeric' %]
+                            <input type="text" class="DynamicFieldText Validate_Alphanumeric [% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" id="[% Data.Question.replace(' ', '-') %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                        [% ELSIF Data.QuestionType == 'Numeric' %]
+                            <input type="text" class="DynamicFieldText Validate_Number [% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                        [% ELSIF Data.QuestionType == 'Numeric (Currency)' %]
+                            <input type="text" class=" DynamicFieldText [% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                        [% ELSIF Data.QuestionType == 'Date Picker' %]
+                            <input type="date" class="input-text Validate_Date [% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                        [% ELSIF Data.QuestionType == 'DateTime' %]
+                            <input type="datetime-local" class="input-text Validate_Date [% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                        [% END %]
+                        </div>
+                        <div class="Clear"></div>
+                    [% RenderBlockEnd("Assets") %]
+                    </fieldset>
+                    <br>
+                    <hr class="custom-line">
+                [% RenderBlockEnd("PaSDetails") %]
+
+                [% RenderBlockStart("EquipmentDetails") %]
+                    <div>
+                      <p>[% Data.ServiceRequestType %]</p>
+                        <table class="DataTable">
+                          <thead>
+                              <tr> 
+                                  <th> [% Translate("Description") | html %] </th>
+                                  <th> [% Translate("Brand") | html %] </th>
+                                  <th> [% Translate("Quantity") | html %] </th>
+                                  <th> [% Translate("Weight") | html %] </th>
+                                  <th> [% Translate("AC/DC") | html %] </th>
+                                  <th> [% Translate("IT Load (Kw)") | html %] </th>
+                                  <th> [% Translate("Actions ") | html %] </th>
+
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <td><input type="text" class="" name="desc" /></td>
+                              <td><input type="text" class="brand" name="brand" /></td>
+                              <td><input type="text" class="quantity" name="quantity" /></td>
+                              <td><input type="text" class="weight" name="weight" /></td>
+                              <td><input type="text" class="ac_dc" name="ac_dc" /></td>
+                              <td><input type="text" class="it_load" name="it_load" /></td>
+                              <td><button class="addbutton">+</button></td>
+                          </tbody>
+                      </table>
+                    </div>
+                    [% RenderBlockEnd("EquipmentDetails") %]
+
+                [% WRAPPER JSOnDocumentComplete %]
+                    <script type="text/javascript">//<![CDATA[
+                       $( document ).ready( function() {
+
+                            // Dropdown
+                           if( $( '#default' ).length > 0 ) {
+                                var options = $( this ).find( 'option' );
+                                $( options ).each( function() {
+                                    if( $( this ).val().length > 0 ) {
+                                        $( this ).attr( 'selected', 'selected' );
+                   
+                                        return false;
+                                    }
+                                });
+                            }
+                       
+                        // Radiobutton
+                        var inputRadios         = $( '.radio input[type="radio"]' );
+                        var arr_inputRadioNames = new Array();
+                       
+                        $( inputRadios ).each( function() {
+                            var radioName   = $( this ).attr( 'name' );
+                            arr_inputRadioNames.push( radioName );
+                        } );
+                       
+                        $( $.unique( arr_inputRadioNames ) ).each( function( key, name ) {
+                            $( '.radio input[name="' + name + '"]:first' ).attr( 'checked', true );
+                        } );
+                       
+                       
+                        // Checkbox
+                        var inputCheckboxs          = $( '.checkbox input[type="checkbox"]' );
+                        var arr_inputcheckboxNames  = new Array();
+                        $( inputCheckboxs ).each( function() {
+                            var checkboxName    = $( this ).attr( 'name' );
+                            arr_inputcheckboxNames.push( checkboxName );
+                        } );
+                       
+                        //$( $.unique( arr_inputcheckboxNames ) ).each( function( key, name ) {
+                        //  $( '.checkbox input[name="' + name + '"]:first' ).attr( 'checked', true );
+                        //} );
+                       
+                       
+                       } );
+                       //]]>
+                    </script>
+                [% END %] 
+
+
+                <!-- [% RenderBlockStart("Remains") %]
+                    <div class="section-data bordertop">
+                        <div class="row">
+                           <div class="col-sm-6">
+                              <p class="prod-subtotal" data-currency="RM" data-price="1078.00">
+                                 <br />
+                              </p>
+                           </div>
+                           <div class="col-sm-6 alignRight">
+                              <button id="SubmitNext" type="submit" ass="btn btn-proceed btn-target" data-target="/otrs/customer.pl?Action=CustomerCheckout">[% IF Data.action == 'Edit' %] Update [% ELSE %] Next [% END %]</button>
+                           </div>
+                        </div>
+                    </div>
+                 [% RenderBlockEnd("Remains") %]  -->
+            
+
+
+             <div class="RichTextHolder ">
+                <textarea id="RichText" class="RichText [% Data.BodyValidate | html %] [% Data.BodyInvalid | html %]" name="Body" rows="15" cols="[% Config("Ticket::Frontend::TextAreaNote") %]">[% Data.Body | html %]</textarea>
+                <label for="RichText" class="Mandatory">
+                    [% Translate("Text") | html %] <span class="Marker">*</span>
+                </label>
+                <div id="RichTextError" class="TooltipErrorMessage" ><p>[% Translate("This field is required.") | html %]</p></div>
+                <div id="RichTextServerError" class="TooltipErrorMessage NoJavaScriptMessage[% Data.BodyInvalid | html %]" ><p>[% Translate("This field is required.") | html %]</p></div>
+                <div class="Clear"></div>
+            </div>
+
+            <div class="Row [% Data.AttachmentsHiddenClass | html %]">
+                <div id="oooAttachments" class="Field">
+                    <div class="DnDUploadBox">
+        [% INCLUDE "FormElements/CustomerAttachmentList.tt" %]
+                    </div>
+                </div>
+                <div class="Clear"></div>
+            </div>
+
+
+
+            <div id="BottomActionRow" class="ActionRow">
+                <button id="submitRichText" class="oooL" accesskey="g" title="[% Translate("Submit") | html %] (g)" type="submit" value="[% Translate("Submit") | html %]">[% Translate("Submit") | html %]</button>
+            </div> 
+         
+
+
+
+               
+               
+<!--                 <div class="Row ">
+                    [% IF Data.QuestionType == 'Free Text' %]
+                        <input type="text" class="" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                    [% ELSIF Data.QuestionType == 'Radio Button' %]
+                        <div class="[% IF Data.Default == 'Yes'%] radio [% END %]">
+                           [% FOREACH key IN Data.Answer %]
+                           <label class="label-checkbox">[% key %] <input type="radio" name="[% Data.Question %]" value="[% key %]" id="radiodefault"/></label>
+                           [% END %]
+                        </div>
+                    [% ELSIF Data.QuestionType == 'Checkbox' %]
+                        <div class="checkbox" >
+                           [% FOREACH key IN Data.Answer %]
+                           <label class="input-checkbox">[% key %] <input type="checkbox" name="checkboxname" value="[% key %]"  /></label>
+                           [% END %]
+                           <input type=hidden name="[% Data.Question %]" value="" \>
+                        </div>
+                    [% ELSIF Data.QuestionType == 'Dropdown' %]
+                        <select name="[% Data.Question %]" class="input-text [% IF Data.Mandatory == 'Yes' %] Validate_Required [% END %]" id="[% IF Data.Default == 'Yes' %] default [% END %]">
+                           <option value=""></option>
+                           [% FOREACH key IN Data.Answer %]
+                           <option value="[% key %]">[% key %]</option>
+                           [% END %]
+                        </select>
+                    [% ELSIF Data.QuestionType == 'Alphanumeric' %]
+                        <input type="text" class="input-text Validate_Alphanumeric [% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" id="[% Data.Question.replace(' ', '-') %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                    [% ELSIF Data.QuestionType == 'Numeric' %]
+                        <input type="text" class="input-text Validate_Number [% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                    [% ELSIF Data.QuestionType == 'Numeric (Currency)' %]
+                        <input type="text" class="[% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                    [% ELSIF Data.QuestionType == 'Date Picker' %]
+                        <input type="date" class="input-text Validate_Date [% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                    [% END %]
+                   
+
+
+
+                    <label class="label-quest Mandatory" for="[% Data.Question %]">
+                           [% IF Data.Mandatory == 'Yes' %]
+                           *
+                           [% END %]
+                           [% Data.Question %]
+                    </label>
+
+                    <div class="Clear"></div>
+                </div>
+ -->
+               
+
+                       <!--  <div class="col-sm-6">
+                           <label class="label-quest Mandatory" for="[% Data.Question %]">
+                           [% IF Data.Mandatory == 'Yes' %]
+                           *
+                           [% END %]
+                           [% Data.Question %]</label>
+                           <div class="Field">
+                              [% IF Data.QuestionType == 'Free Text' %]
+                              <input type="text" class="input-text [% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                              [% ELSIF Data.QuestionType == 'Radio Button' %]
+                              <div class="[% IF Data.Default == 'Yes'%] radio [% END %]">
+                                 [% FOREACH key IN Data.Answer %]
+                                 <label class="label-checkbox">[% key %] <input type="radio" name="[% Data.Question %]" value="[% key %]" id="radiodefault"/></label>
+                                 [% END %]
+                              </div>
+                              [% ELSIF Data.QuestionType == 'Checkbox' %]
+                              <div class="checkbox" >
+                                 [% FOREACH key IN Data.Answer %]
+                                 <label class="input-checkbox">[% key %] <input type="checkbox" name="checkboxname" value="[% key %]"  /></label>
+                                 [% END %]
+                                 <input type=hidden name="[% Data.Question %]" value="" \>
+                              </div>
+                              [% ELSIF Data.QuestionType == 'Dropdown' %]
+                              <select name="[% Data.Question %]" class="input-text [% IF Data.Mandatory == 'Yes' %] Validate_Required [% END %]" id="[% IF Data.Default == 'Yes' %] default [% END %]">
+                                 <option value=""></option>
+                                 [% FOREACH key IN Data.Answer %]
+                                 <option value="[% key %]">[% key %]</option>
+                                 [% END %]
+                              </select>
+                              [% ELSIF Data.QuestionType == 'Alphanumeric' %]
+                              <input type="text" class="input-text Validate_Alphanumeric [% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" id="[% Data.Question.replace(' ', '-') %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                              [% ELSIF Data.QuestionType == 'Numeric' %]
+                              <input type="text" class="input-text Validate_Number [% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                              [% ELSIF Data.QuestionType == 'Numeric (Currency)' %]
+                              <input type="text" class="input-text Validate_Currency [% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                              [% ELSIF Data.QuestionType == 'Date Picker' %]
+                              <input type="date" class="input-text Validate_Date [% IF Data.Mandatory == 'Yes' %] Modernize Validate_Required [% END %]" name="[% Data.Question %]" value="[% Data.DefaultText %]"/>
+                              [% END %]
+                           </div>
+                        </div> -->
+
+
+                        
+      </form>
+   </div>
+</div>
+
+
+[% WRAPPER JSOnDocumentComplete %]
+<script type="text/javascript">//<![CDATA[
+
+$(document).ready(function() {
+        // Add row
+        $('.addbutton').click(function(event) {
+              event.preventDefault(); // Prevent form submission
+              var newRow = '<tr>' +
+                            '<td><input type="text" class="" name="desc" /></td>' +
+                            '<td><input type="text" class="brand" name="brand" /></td>' +
+                            '<td><input type="text" class="quantity" name="quantity" /></td>' +
+                            '<td><input type="text" class="weight" name="weight" /></td>' +
+                            '<td><input type="text" class="ac_dc" name="ac_dc" /></td>' +
+                            '<td><input type="text" class="it_load" name="it_load" /></td>' +
+                            '<td><button class="removebutton">-</button></td>' +
+                        '</tr>';
+            $('table.DataTable tbody').append(newRow);
+        });
+
+        // Remove row
+        $('table.DataTable').on('click', '.removebutton', function() {
+            $(this).closest('tr').remove();
+        });
+    });
+//]]></script>
+[% END %]

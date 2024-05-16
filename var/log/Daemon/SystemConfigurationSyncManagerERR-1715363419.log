@@ -1,0 +1,183 @@
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:18 2024
+
+ Message: There was an error executing ConfigurationDeploySync: ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:18 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0432b98), "namespaces", "SysConfigDeployment") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a37a0416a08), "Value", HASH(0x5a37a05b2990), "TTL", 2592000, "Key", "DeploymentGet::DeploymentID::206", "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a37a03c92d8), "Type", "SysConfigDeployment", "Key", "DeploymentGet::DeploymentID::206", "Value", HASH(0x5a37a05b2990), "TTL", ...) called at /opt/otobo/Kernel/System/SysConfig/DB.pm line 4671
+	Kernel::System::SysConfig::DB::DeploymentGet(Kernel::System::SysConfig::DB=HASH(0x5a37a03ee150), "DeploymentID", 206) called at /opt/otobo/Kernel/System/SysConfig/DB.pm line 4863
+	Kernel::System::SysConfig::DB::DeploymentGetLast(Kernel::System::SysConfig::DB=HASH(0x5a37a03ee150)) called at /opt/otobo/Kernel/System/SysConfig.pm line 3771
+	Kernel::System::SysConfig::ConfigurationDeploySync(Kernel::System::SysConfig=HASH(0x5a379f81d898)) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SystemConfigurationSyncManager.pm line 148
+	eval {...} called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SystemConfigurationSyncManager.pm line 135
+	Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager::Run(Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11880): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::SysConfig::DB::DeploymentGet Line: 4671
+   Module: Kernel::System::SysConfig::DB::DeploymentGetLast Line: 4863
+   Module: Kernel::System::SysConfig::ConfigurationDeploySync Line: 3771
+   Module: (eval) Line: 148
+   Module: Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager::Run Line: 135
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:18 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0432b98), "namespaces", "SysConfigDeployment") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a37a0416a08), "Value", HASH(0x5a37a05c2b60), "TTL", 2592000, "Key", "DeploymentGetLast", "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a37a03c92d8), "Type", "SysConfigDeployment", "Key", "DeploymentGetLast", "Value", HASH(0x5a37a05c2b60), "TTL", ...) called at /opt/otobo/Kernel/System/SysConfig/DB.pm line 4872
+	Kernel::System::SysConfig::DB::DeploymentGetLast(Kernel::System::SysConfig::DB=HASH(0x5a37a03ee150)) called at /opt/otobo/Kernel/System/SysConfig.pm line 3771
+	Kernel::System::SysConfig::ConfigurationDeploySync(Kernel::System::SysConfig=HASH(0x5a379f81d898)) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SystemConfigurationSyncManager.pm line 148
+	eval {...} called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SystemConfigurationSyncManager.pm line 135
+	Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager::Run(Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11880): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::SysConfig::DB::DeploymentGetLast Line: 4872
+   Module: Kernel::System::SysConfig::ConfigurationDeploySync Line: 3771
+   Module: (eval) Line: 148
+   Module: Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager::Run Line: 135
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:18 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0432b98), "namespaces", "SysConfigDeployment") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a37a0416a08), "Value", ARRAY(0x5a37a0434aa8), "TTL", 2592000, "Key", "DeploymentUserList", "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a37a03c92d8), "Type", "SysConfigDeployment", "Key", "DeploymentUserList", "Value", ARRAY(0x5a37a0434aa8), "TTL", ...) called at /opt/otobo/Kernel/System/SysConfig/DB.pm line 4807
+	Kernel::System::SysConfig::DB::DeploymentUserList(Kernel::System::SysConfig::DB=HASH(0x5a37a03ee150)) called at /opt/otobo/Kernel/System/SysConfig/Base/UserSetting.pm line 362
+	Kernel::System::SysConfig::Base::UserSetting::UserConfigurationDeploySync(Kernel::System::SysConfig=HASH(0x5a379f81d898)) called at /opt/otobo/Kernel/System/SysConfig.pm line 3809
+	Kernel::System::SysConfig::ConfigurationDeploySync(Kernel::System::SysConfig=HASH(0x5a379f81d898)) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SystemConfigurationSyncManager.pm line 148
+	eval {...} called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SystemConfigurationSyncManager.pm line 135
+	Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager::Run(Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11880): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::SysConfig::DB::DeploymentUserList Line: 4807
+   Module: Kernel::System::SysConfig::Base::UserSetting::UserConfigurationDeploySync Line: 362
+   Module: Kernel::System::SysConfig::ConfigurationDeploySync Line: 3809
+   Module: (eval) Line: 148
+   Module: Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager::Run Line: 135
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:18 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0432b98), "namespaces", "User") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a37a0416a08), "Value", HASH(0x5a379f407848), "TTL", 1728000, "Key", "UserList::Short::0::0::1", "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a37a03c92d8), "Type", "User", "TTL", 1728000, "Key", "UserList::Short::0::0::1", "Value", ...) called at /opt/otobo/Custom/Kernel/System/User.pm line 1245
+	Kernel::System::User::UserList(Kernel::System::User=HASH(0x5a37a0392f18), "Valid", 0, "NoOutOfOffice", 1) called at /opt/otobo/Kernel/System/SysConfig/Base/UserSetting.pm line 372
+	Kernel::System::SysConfig::Base::UserSetting::UserConfigurationDeploySync(Kernel::System::SysConfig=HASH(0x5a379f81d898)) called at /opt/otobo/Kernel/System/SysConfig.pm line 3809
+	Kernel::System::SysConfig::ConfigurationDeploySync(Kernel::System::SysConfig=HASH(0x5a379f81d898)) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SystemConfigurationSyncManager.pm line 148
+	eval {...} called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SystemConfigurationSyncManager.pm line 135
+	Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager::Run(Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11880): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::User::UserList Line: 1245
+   Module: Kernel::System::SysConfig::Base::UserSetting::UserConfigurationDeploySync Line: 372
+   Module: Kernel::System::SysConfig::ConfigurationDeploySync Line: 3809
+   Module: (eval) Line: 148
+   Module: Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager::Run Line: 135
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+
+
+ Traceback (11880): 
+   Module: Kernel::System::Daemon::DaemonModules::BaseTaskWorker::_HandleError Line: 60
+   Module: Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager::Run Line: 154
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:19 2024
+
+ Message: Invalid email address Sender - otobo@SIT-Otobo-Non-prod-1.ap-south-1.compute.internal: invalid otobo@SIT-Otobo-Non-prod-1.ap-south-1.compute.internal (SIT-Otobo-Non-prod-1.ap-south-1.compute.internal has no mail exchanger (MX) or A resource record defined.)! 
+
+ Traceback (11880): 
+   Module: Kernel::System::MailQueue::_CheckValidEmailAddresses Line: 1305
+   Module: Kernel::System::MailQueue::__ANON__ Line: 200
+   Module: Kernel::System::MailQueue::__ANON__ Line: 170
+   Module: Kernel::System::MailQueue::Create Line: 202
+   Module: Kernel::System::Email::Send Line: 655
+   Module: Kernel::System::Daemon::DaemonModules::BaseTaskWorker::_HandleError Line: 78
+   Module: Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager::Run Line: 154
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:19 2024
+
+ Message: CommunicationLog(ID:2994,AccountType:-,AccountID:-,Direction:Outgoing,Transport:Email,ObjectLogType:Message,ObjectLogID:3439)::Kernel::System::MailQueue => Invalid email address Sender - otobo@SIT-Otobo-Non-prod-1.ap-south-1.compute.internal: invalid otobo@SIT-Otobo-Non-prod-1.ap-south-1.compute.internal (SIT-Otobo-Non-prod-1.ap-south-1.compute.internal has no mail exchanger (MX) or A resource record defined.)! 
+
+ Traceback (11880): 
+   Module: Kernel::System::CommunicationLog::_LogError Line: 563
+   Module: Kernel::System::CommunicationLog::ObjectLog Line: 321
+   Module: Kernel::System::MailQueue::_CheckValidEmailAddresses Line: 1310
+   Module: Kernel::System::MailQueue::__ANON__ Line: 200
+   Module: Kernel::System::MailQueue::__ANON__ Line: 170
+   Module: Kernel::System::MailQueue::Create Line: 202
+   Module: Kernel::System::Email::Send Line: 655
+   Module: Kernel::System::Daemon::DaemonModules::BaseTaskWorker::_HandleError Line: 78
+   Module: Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager::Run Line: 154
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:19 2024
+
+ Message: CommunicationLog(ID:2994,AccountType:-,AccountID:-,Direction:Outgoing,Transport:Email,ObjectLogType:Message,ObjectLogID:3439)::Kernel::System::Email => Errors occurred during message sending: Error while queueing email to 'root@localhost' from 'otobo@SIT-Otobo-Non-prod-1.ap-south-1.compute.internal'. Subject => 'OTOBO Scheduler Daemon SystemConfigurationSyncManager: ConfigurationDeploySync';
+
+ Traceback (11880): 
+   Module: Kernel::System::CommunicationLog::_LogError Line: 563
+   Module: Kernel::System::CommunicationLog::ObjectLog Line: 321
+   Module: Kernel::System::Email::__ANON__ Line: 189
+   Module: Kernel::System::Email::Send Line: 665
+   Module: Kernel::System::Daemon::DaemonModules::BaseTaskWorker::_HandleError Line: 78
+   Module: Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager::Run Line: 154
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:19 2024
+
+ Message: Error while queueing email to 'root@localhost' from 'otobo@SIT-Otobo-Non-prod-1.ap-south-1.compute.internal'. Subject => 'OTOBO Scheduler Daemon SystemConfigurationSyncManager: ConfigurationDeploySync';
+
+ Traceback (11880): 
+   Module: Kernel::System::Email::__ANON__ Line: 206
+   Module: Kernel::System::Email::Send Line: 665
+   Module: Kernel::System::Daemon::DaemonModules::BaseTaskWorker::_HandleError Line: 78
+   Module: Kernel::System::Daemon::DaemonModules::SystemConfigurationSyncManager::Run Line: 154
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+

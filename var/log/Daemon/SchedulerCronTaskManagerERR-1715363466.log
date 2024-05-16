@@ -1,0 +1,706 @@
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Value", "2024-05-11 01:48:00", "TTL", 300, "CacheInMemory", 0, "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "ArticleSearchIndexRebuild::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2149
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "ArticleSearchIndexRebuild", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2149
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [del] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "SchedulerDB:TaskListUnlocked") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 157
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 156
+	Kernel::System::Cache::Redis::Delete(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Key", "TaskListUnlocked", "Type", "SchedulerDB") called at /opt/otobo/Kernel/System/Cache.pm line 358
+	Kernel::System::Cache::Delete(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDB", "Key", "TaskListUnlocked") called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 189
+	Kernel::System::Daemon::SchedulerDB::TaskAdd(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "Type", "Cron", "Name", "ArticleSearchIndexRebuild", "Attempts", 1, "MaximumParallelInstances", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2160
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "ArticleSearchIndexRebuild", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Delete Line: 160
+   Module: Kernel::System::Cache::Delete Line: 358
+   Module: Kernel::System::Daemon::SchedulerDB::TaskAdd Line: 189
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2160
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Value", "2024-05-10 11:00:00", "TTL", 300, "CacheInBackend", 1, "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "CommunicationLogDelete::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "CommunicationLogDelete", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "TTL", 300, "Value", "2024-05-05 08:40:00", "CacheInMemory", 0, "Key", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "ConfigurationDeploymentCleanup::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "ConfigurationDeploymentCleanup", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Value", "2024-05-05 08:20:00", "TTL", 300, "CacheInBackend", 1, "Key", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "CoreCacheCleanup::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "CoreCacheCleanup", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "CacheInBackend", 1, "CacheInMemory", 0, "Key", "FirstResponseTimeEscalationCheck::Cron", "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "FirstResponseTimeEscalationCheck::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2149
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "FirstResponseTimeEscalationCheck", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2149
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [del] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "SchedulerDB:TaskListUnlocked") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 157
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 156
+	Kernel::System::Cache::Redis::Delete(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Type", "SchedulerDB", "Key", "TaskListUnlocked") called at /opt/otobo/Kernel/System/Cache.pm line 358
+	Kernel::System::Cache::Delete(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDB", "Key", "TaskListUnlocked") called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 189
+	Kernel::System::Daemon::SchedulerDB::TaskAdd(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "Type", "Cron", "Name", "FirstResponseTimeEscalationCheck", "Attempts", 1, "MaximumParallelInstances", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2160
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "FirstResponseTimeEscalationCheck", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Delete Line: 160
+   Module: Kernel::System::Cache::Delete Line: 358
+   Module: Kernel::System::Daemon::SchedulerDB::TaskAdd Line: 189
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2160
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Value", "2024-05-11 01:48:00", "TTL", 300, "CacheInBackend", 1, "Key", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "EscalationCheck::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2149
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "EscalationCheck", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2149
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [del] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "SchedulerDB:TaskListUnlocked") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 157
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 156
+	Kernel::System::Cache::Redis::Delete(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Key", "TaskListUnlocked", "Type", "SchedulerDB") called at /opt/otobo/Kernel/System/Cache.pm line 358
+	Kernel::System::Cache::Delete(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDB", "Key", "TaskListUnlocked") called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 189
+	Kernel::System::Daemon::SchedulerDB::TaskAdd(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "Type", "Cron", "Name", "EscalationCheck", "Attempts", 1, "MaximumParallelInstances", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2160
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "EscalationCheck", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Delete Line: 160
+   Module: Kernel::System::Cache::Delete Line: 358
+   Module: Kernel::System::Daemon::SchedulerDB::TaskAdd Line: 189
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2160
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "TTL", 300, "Value", "2024-05-11 01:05:00", "CacheInBackend", 1, "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "GenerateDashboardStats::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "GenerateDashboardStats", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Value", "2024-05-10 11:02:00", "TTL", 300, "CacheInMemory", 0, "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "GeneticInterfaceDebugLogCleanup::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "GeneticInterfaceDebugLogCleanup", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "CacheInBackend", 1, "CacheInMemory", 0, "Type", "SchedulerDBRecurrentTaskExecute", "Key", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "LoaderCacheDelete::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "LoaderCacheDelete", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Type", "SchedulerDBRecurrentTaskExecute", "CacheInMemory", 0, "Key", "MailAccountFetch::Cron", "CacheInBackend", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "MailAccountFetch::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "MailAccountFetch", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "TTL", 300, "Value", "2024-05-11 01:48:00", "CacheInBackend", 1, "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "MailQueueSend::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2149
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "MailQueueSend", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2149
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [del] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "SchedulerDB:TaskListUnlocked") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 157
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 156
+	Kernel::System::Cache::Redis::Delete(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Type", "SchedulerDB", "Key", "TaskListUnlocked") called at /opt/otobo/Kernel/System/Cache.pm line 358
+	Kernel::System::Cache::Delete(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDB", "Key", "TaskListUnlocked") called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 189
+	Kernel::System::Daemon::SchedulerDB::TaskAdd(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "Type", "Cron", "Name", "MailQueueSend", "Attempts", 1, "MaximumParallelInstances", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2160
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "MailQueueSend", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Delete Line: 160
+   Module: Kernel::System::Cache::Delete Line: 358
+   Module: Kernel::System::Daemon::SchedulerDB::TaskAdd Line: 189
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2160
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "CacheInBackend", 1, "CacheInMemory", 0, "Type", "SchedulerDBRecurrentTaskExecute", "Key", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "RebuildEscalationIndex::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2149
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "RebuildEscalationIndex", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2149
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [del] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "SchedulerDB:TaskListUnlocked") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 157
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 156
+	Kernel::System::Cache::Redis::Delete(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Type", "SchedulerDB", "Key", "TaskListUnlocked") called at /opt/otobo/Kernel/System/Cache.pm line 358
+	Kernel::System::Cache::Delete(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDB", "Key", "TaskListUnlocked") called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 189
+	Kernel::System::Daemon::SchedulerDB::TaskAdd(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "Type", "Cron", "Name", "RebuildEscalationIndex", "Attempts", 1, "MaximumParallelInstances", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2160
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "RebuildEscalationIndex", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Delete Line: 160
+   Module: Kernel::System::Cache::Delete Line: 358
+   Module: Kernel::System::Daemon::SchedulerDB::TaskAdd Line: 189
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2160
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "CacheInBackend", 1, "CacheInMemory", 0, "Type", "SchedulerDBRecurrentTaskExecute", "Key", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "RegistrationUpdateSend::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "RegistrationUpdateSend", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "CacheInBackend", 1, "CacheInMemory", 0, "Key", "RenewCustomerSMIMECertificates::Cron", "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "RenewCustomerSMIMECertificates::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "RenewCustomerSMIMECertificates", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "TTL", 300, "Value", "2024-05-11 00:55:00", "CacheInMemory", 0, "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "SessionDeleteExpired::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "SessionDeleteExpired", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "CacheInBackend", 1, "CacheInMemory", 0, "Key", "SpoolMailsReprocess::Cron", "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "SpoolMailsReprocess::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "SpoolMailsReprocess", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "TTL", 300, "Value", "2024-05-11 01:40:00", "CacheInBackend", 1, "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "StatsReportsGenerateCron::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "StatsReportsGenerateCron", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "Type", "SchedulerDBRecurrentTaskExecute", "CacheInMemory", 0, "Key", "SupportDataCollectAsynchronous::Cron", "CacheInBackend", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "SupportDataCollectAsynchronous::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "SupportDataCollectAsynchronous", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "TTL", 300, "Value", "2024-05-10 09:01:00", "CacheInBackend", 1, "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "TicketAcceleratorRebuild::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "TicketAcceleratorRebuild", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "CacheInBackend", 1, "CacheInMemory", 0, "Key", "TicketDraftDeleteExpired::Cron", "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "TicketDraftDeleteExpired::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "TicketDraftDeleteExpired", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "TTL", 300, "Value", "2024-05-11 01:40:00", "CacheInMemory", 0, "Key", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "TicketNumberCounterCleanup::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "TicketNumberCounterCleanup", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "CacheInBackend", 1, "CacheInMemory", 0, "Key", "TicketPendingCheck::Cron", "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "TicketPendingCheck::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "TicketPendingCheck", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "TTL", 300, "Value", "2024-05-11 01:35:00", "CacheInMemory", 0, "Type", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "TicketUnlockTimeout::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "TicketUnlockTimeout", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+
+ERROR: OTOBO-otobo.Daemon.pl - Daemon Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager-78 Perl: 5.34.0 OS: linux Time: Sat May 11 01:48:05 2024
+
+ Message: [sadd] READONLY You can't write against a read only replica.,  at /usr/local/lib/x86_64-linux-gnu/perl/5.34.0/Redis/Fast.pm line 275.
+	Redis::Fast::__ANON__(Redis::Fast=SCALAR(0x5a37a0134b90), "namespaces", "SchedulerDBRecurrentTaskExecute") called at /opt/otobo/Kernel/System/Cache/Redis.pm line 69
+	eval {...} called at /opt/otobo/Kernel/System/Cache/Redis.pm line 67
+	Kernel::System::Cache::Redis::Set(Kernel::System::Cache::Redis=HASH(0x5a379fbdd678), "TTL", 300, "Value", "2024-05-11 01:46:00", "CacheInBackend", 1, "Key", ...) called at /opt/otobo/Kernel/System/Cache.pm line 253
+	Kernel::System::Cache::Set(Kernel::System::Cache=HASH(0x5a379fb78ff8), "Type", "SchedulerDBRecurrentTaskExecute", "Key", "WebUploadCacheCleanup::Cron", "TTL", 300, "Value", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 2105
+	Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886, "TaskName", "WebUploadCacheCleanup", "TaskType", ...) called at /opt/otobo/Kernel/System/Daemon/SchedulerDB.pm line 1462
+	Kernel::System::Daemon::SchedulerDB::CronTaskToExecute(Kernel::System::Daemon::SchedulerDB=HASH(0x5a379f793f48), "NodeID", 1, "PID", 11886) called at /opt/otobo/Kernel/System/Daemon/DaemonModules/SchedulerCronTaskManager.pm line 110
+	Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run(Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager=HASH(0x5a379f644ea0)) called at ./bin/otobo.Daemon.pl line 386
+	eval {...} called at ./bin/otobo.Daemon.pl line 386
+	main::Start() called at ./bin/otobo.Daemon.pl line 164
+
+
+ Traceback (11886): 
+   Module: Kernel::System::Cache::Redis::Set Line: 88
+   Module: Kernel::System::Cache::Set Line: 253
+   Module: Kernel::System::Daemon::SchedulerDB::RecurrentTaskExecute Line: 2105
+   Module: Kernel::System::Daemon::SchedulerDB::CronTaskToExecute Line: 1462
+   Module: Kernel::System::Daemon::DaemonModules::SchedulerCronTaskManager::Run Line: 110
+   Module: (eval) Line: 386
+   Module: main::Start Line: 386
+   Module: ./bin/otobo.Daemon.pl Line: 164
+

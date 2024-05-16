@@ -1,0 +1,274 @@
+# --
+# Copyright (C) 2001-2016 OTRS AG, http://otrs.com/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+<div class="LayoutPopup ARIARoleMain TicketCreationForm">
+
+    <div class="layer-section">
+        <div class="section-header Header">
+            <h1>[% Translate("Edit") | html %] [% Config("PaS::Hook") %]: [% Data.PaSNumber | html %] &ndash; [% Data.DynamicField_PasTitle | html %]</h1>
+            <p>
+                <a href="#" class="CancelClosePopup">[% Translate("Cancel & close") | html %]</a>
+            </p>
+        </div>
+        <div class="section-content">
+            <div class="section-data">
+                <div class="standardForm">
+                    <form action="[% Env("CGIHandle") %]" method="post" name="compose" id="PaSEditForm" enctype="multipart/form-data" class="Validate PreventMultipleSubmits">
+                        <input type="hidden" name="Action"	value="[% Env("Action") %]"/>
+                        <input type="hidden" name="Subaction" value="Save"/>
+                        <input type="hidden" name="PaSID" value="[% Data.PaSID | html %]"/>
+                        <input type="hidden" name="FormID"	value="[% Data.FormID | html %]"/>
+                        <input type="hidden" name="PaSTitle" id="PaSTitle"	value="[% Data.PaSTitle | html %]"/>
+                        <input type="hidden" name="SLASelectedID"	value="[% Data.SLASelectedID | html %]"/>
+                        <input type="hidden" id="is_valid_product_to_save" name="is_valid_product_to_save" value="[% Data.is_valid_product_to_save | html %]"/>
+                        <input type="hidden" name="ProductCode" value="[% Data.PaSID | html %]"/>
+                        <fieldset class="TableLike FixedLabelSmall">
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-6">
+                                    <div class="form-table">
+                                        <h3 class="form-tableLabel">Header Details</h3>
+                                        <div class="accept-reject-based-fields" >
+                                            [% RenderBlockStart("DynamicField_PasTitle") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% Data.Field %]
+                                                </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% RenderBlockEnd("DynamicField_PasTitle") %]
+                                            
+                                            <div class="Row Row_DynamicField_">
+                                                <label class="Mandatory" for="PaSRefNo">[% Translate("Product Code ") | html %]:</label>
+                                                <div class="Field">
+                                                    <input type="text" readonly="readonly" name="PaSRefNo" id="PaSRefNo" value="[% Data.PaSNumber | html %]">
+                                                </div>
+                                            </div>
+
+                                            [% RenderBlockStart("DynamicField_PaSShortDescription") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% Data.Field %]
+                                                </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% RenderBlockEnd("DynamicField_PaSShortDescription") %]
+
+                                            [% RenderBlockStart("DynamicField_Manufacturer") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% Data.Field %]
+                                                </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% RenderBlockEnd("DynamicField_Manufacturer") %]
+
+                                            [% RenderBlockStart("DynamicField_PaSModel") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% Data.Field %]
+                                                </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% RenderBlockEnd("DynamicField_PaSModel") %]
+
+                                            [% RenderBlockStart("DynamicField_PaSActiveVisible") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% Data.Field %]
+                                                </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% RenderBlockEnd("DynamicField_PaSActiveVisible") %]
+
+                                            [% RenderBlockStart("DynamicField_PaSCategory") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% Data.Field %]
+                                                </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% RenderBlockEnd("DynamicField_PaSCategory") %]
+
+
+                                            [% RenderBlockStart("DynamicField_PaSOrder") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% Data.Field %]
+                                                </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% RenderBlockEnd("DynamicField_PaSOrder") %]
+
+
+                                            [% RenderBlockStart("DynamicField_PaSSubCategory") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% Data.Field %]
+                                                </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% RenderBlockEnd("DynamicField_PaSSubCategory") %]
+
+                                            [% RenderBlockStart("DynamicField_PaSCost") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% Data.Field %]
+                                                </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% RenderBlockEnd("DynamicField_PaSCost") %]
+
+                                            [% RenderBlockStart("DynamicField_PaSBusinessOwner") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% Data.Field %]
+                                                </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% RenderBlockEnd("DynamicField_PaSBusinessOwner") %]
+
+                                            <!-- <label class="Mandatory" for="SLAID"><span class="Marker">* </span>[% Translate("SLA") | html %]:</label>
+                                            <div class="Field">                                                                
+                                                <select class=" Modernize Validate_Required" id="SLAID" name="SLAID" >
+                                                    [% FOREACH i IN Data.SLAID %]
+                                                    <option value=""></option>
+                                                    <option value="[% i %]">[% i %]</option>
+                                                    [% END %]
+                                                </select>
+                                            </div> -->
+
+                                            [% RenderBlockStart("DynamicField_PaSKeywords") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% Data.Field %]
+                                                </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% RenderBlockEnd("DynamicField_PaSKeywords") %]
+
+                                            [% RenderBlockStart("DynamicField_PaSStatus") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% Data.Field %]
+                                                </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% RenderBlockEnd("DynamicField_PaSStatus") %]
+
+                                            [% RenderBlockStart("DynamicField_PaSDescription") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% RenderBlockStart("RichText") %]
+                                                    [% InsertTemplate("CustomerRichTextEditor.tt") %]
+                                                    [% RenderBlockEnd("RichText") %]
+
+                                                    <textarea data-maxlength="3800" cols="42" rows="7" title="Product Description" name="DynamicField_PaSDescription" id="RichText DynamicField_PaSDescription" class="RichText DynamicFieldTextArea Validate_Required Validate_MaxLength" aria-required="true">[% Data.Field %]</textarea>
+                                                    <div class="TooltipErrorMessage" id="DynamicField_PaSDescriptionError">
+                                                    <p>
+                                                        This field is required or The field content is too long! Maximum size is 3800 characters.
+                                                    </p>
+                                                </div>
+                                             </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% WRAPPER JSOnDocumentComplete %]
+                                            <script type="text/javascript">//<![CDATA[
+
+                                                if ('' == $('#PaSRefNo').val()) {
+                                                    Core.AJAX.FormUpdate($('#PaSAddForm'), 'AJAXUpdate');
+                                                }
+                                                //]]></script>
+                                            [% END %]
+                                            [% RenderBlockEnd("DynamicField_PaSDescription") %]
+											
+											  [% RenderBlockStart("DynamicField_PaSRoles") %]
+                                            <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                                                [% Data.Label %]
+                                                <div class="Field">
+                                                    [% Data.Field %]
+                                                </div>
+                                                <div class="Clear"></div>
+                                            </div>
+                                            [% RenderBlockEnd("DynamicField_PaSRoles") %]
+
+
+                                            [% RenderBlockStart("AttachmentUpload") %]
+                                            <label>[% Translate("Attachment") | html %]:</label>
+                                            <div class="Field">
+                                                <ul>
+                                                    [% RenderBlockStart("Attachment") %]
+                                                    <li>
+                                                        [% Data.Filename | html %] ([% Data.Filesize | html %])
+                                                        <button type="submit" id="AttachmentDelete[% Data.FileID | html %]" name="AttachmentDelete[% Data.FileID | html %]" value="[% Translate("Delete") | html %]">[% Translate("Delete") | html %]</button>
+                                                        [% WRAPPER JSOnDocumentComplete %]
+                                                        <script type="text/javascript">//<![CDATA[
+                                                            $('#AttachmentDelete[% Data.FileID | html %]').bind('click', function () {
+                                                                Core.Form.Validate.DisableValidation($('#AttachmentDelete[% Data.FileID | html %]').closest('form'));
+                                                            });
+                                                            //]]></script>
+                                                        [% END %]
+                                                    </li>
+                                                    [% RenderBlockEnd("Attachment") %]
+                                                    <li>
+                                                        <input name="FileUpload" id="FileUpload" type="file" size="40"/>
+                                                        <input type="hidden" id="AttachmentUpload" name="AttachmentUpload" value="0" />
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="Clear"></div>
+                                            [% WRAPPER JSOnDocumentComplete %]
+                                            <script type="text/javascript">//<![CDATA[
+                                                $('#FileUpload').bind('change', function (Event) {
+                                                    var $Form = $('#FileUpload').closest('form');
+                                                    Core.Form.Validate.DisableValidation($Form);
+                                                    $Form.find('#AttachmentUpload').val('1').end().submit();
+                                                });
+                                                //]]></script>
+                                            [% END %]
+                                            [% RenderBlockEnd("AttachmentUpload") %]
+
+                                            <div class="form-table">
+                                                <div class="Field SpacingTop">
+                                                    <button class="btn btn-submit" id="SubmitPaSEdit" accesskey="g" name="PaSEdit" title="[% Translate("Submit") | html %] (g)" type="submit" value="[% Translate("Submit") | html %]">
+                                                        <span>
+                                                            <i class="fa fa-check-square-o"></i>
+                                                            [% Translate("Submit") | html %]
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-sm-3"></div>
+                                    </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 	</div>
+                    </div>-->
+                </div>
