@@ -78,24 +78,27 @@ sub Run {
         my $TicketID = $ParamObject->GetParam( Param => 'TicketID' ) || '';
         my $ServiceRequestType = $ParamObject->GetParam( Param => 'ServiceRequestType' ) || '';
 
-        my %equipmentdata;
-       my @descarray = $ParamObject->GetArray( Param => 'desc');
-       my @brandarray = $ParamObject->GetArray( Param => 'brand');
-       my @quantityarray = $ParamObject->GetArray( Param => 'quantity');
-       my @weightarray = $ParamObject->GetArray( Param => 'weight');
-       my @acdcarray = $ParamObject->GetArray( Param => 'ac_dc');
-       my @itarray = $ParamObject->GetArray( Param => 'it_load');
+       my %equipmentdata;
+       if ($GetParam{ServiceRequestType} eq 'Move In/Out equipment') {
+           # body...
+           my @descarray = $ParamObject->GetArray( Param => 'desc');
+           my @brandarray = $ParamObject->GetArray( Param => 'brand');
+           my @quantityarray = $ParamObject->GetArray( Param => 'quantity');
+           my @weightarray = $ParamObject->GetArray( Param => 'weight');
+           my @acdcarray = $ParamObject->GetArray( Param => 'ac_dc');
+           my @itarray = $ParamObject->GetArray( Param => 'it_load');
 
-        for my $i (0 .. $#descarray) {
-            $equipmentdata{"row".($i+1)} = {
-                Desc     => $descarray[$i],
-                Brand    => $brandarray[$i],
-                Quantity => $quantityarray[$i],
-                weight   => $weightarray[$i],
-                ACDC     => $acdcarray[$i],
-                IT       => $itarray[$i],
-            };
-        }
+            for my $i (0 .. $#descarray) {
+                $equipmentdata{"row".($i+1)} = {
+                    Desc     => $descarray[$i],
+                    Brand    => $brandarray[$i],
+                    Quantity => $quantityarray[$i],
+                    weight   => $weightarray[$i],
+                    ACDC     => $acdcarray[$i],
+                    IT       => $itarray[$i],
+                };
+            }
+       }
                 
         my %Ticket = $TicketObject->TicketGet(
             TicketID => $TicketID,
@@ -247,6 +250,29 @@ sub Run {
                 if($GetParam{ServiceRequestType} eq 'Access card requests'){
                    $PaSServiceRequestObject->UpdateAccess_Card_Requests_Details( %FormData ); 
                    # $PaSServiceRequestObject->Update_equipment_Details( %Param ); 
+                }elsif($GetParam{ServiceRequestType} eq 'Move In/Out equipment'){
+
+                    $PaSServiceRequestObject->UpdateMoveInOutEquipmentDetails( %FormData );
+
+                    foreach my $x (keys %FormData ) {
+                        $Kernel::OM->Get('Kernel::System::Log')->Log(
+                            Priority => 'error',
+                            Message  => "Values >>> $x  >>>> $FormData{$x}",
+                        );
+                    }
+
+                    for my $row (keys %equipmentdata) {
+                        $Param{Desc} = $equipmentdata{$row}->{Desc};
+                        $Param{Brand} = $equipmentdata{$row}->{Brand};
+                        $Param{Quantity} = $equipmentdata{$row}->{Quantity};
+                        $Param{Weight} = $equipmentdata{$row}->{weight};
+                        $Param{ACDC} = $equipmentdata{$row}->{ACDC};
+                        $Param{ITLoad} = $equipmentdata{$row}->{IT};
+                        
+                        if ($Param{Desc}) {
+                            $PaSServiceRequestObject->Update_equipment_Details( %Param );
+                        }
+                    }
                 }
 
                 $TicketObject->StateSet(
@@ -360,9 +386,20 @@ sub Run {
                 State  => 'Valid',
                 UserID => $Self->{UserID},
             );
+            my %AccessData;
+            # my %MoveInOutData;
+            if($GetParam{ServiceRequestType} eq 'Access card requests'){
+                %AccessData = $PaSServiceRequestObject->GetAccessCardData( TicketID => $Param{TicketID});
+            }elsif($GetParam{ServiceRequestType} eq 'Move In/Out equipment'){
+                %AccessData = $PaSServiceRequestObject->GetMoveInOutEquipmentDetails( TicketID => $Param{TicketID});
+                foreach my $x (keys %AccessData) {
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'error',
+                        Message  => "Values >>> $x  >>>> $AccessData{$x}",
+                    );
+                }  
+            }
 
-            
-            my %AccessData = $PaSServiceRequestObject->GetAccessCardData( TicketID => $Param{TicketID} );
             my %Data = $PaSObject->PaSsGet( PaSID => $PaSID );
 
             $LayoutObject->Block(
@@ -406,6 +443,10 @@ sub Run {
                             }
 
                             # my $input_string = $DirectionList->{$ObjectKey}->{DynamicField_Question};
+                            # $Kernel::OM->Get('Kernel::System::Log')->Log(
+                            #     Priority => 'error',
+                            #     Message  => "Values 55>>>  >>>> $input_string",
+                            # );
 
                             my @values = split(',', $DirectionList->{$ObjectKey}->{DynamicField_Answers});
                             $arrQuestion{$ObjectKey}{'Answer'}       = \@values;

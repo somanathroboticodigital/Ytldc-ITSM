@@ -209,6 +209,78 @@ sub UpdateAccess_Card_Requests_Details{
     return 1
 }
 
+sub GetMoveInOutEquipmentDetails {
+    my ( $Self, %Param ) = @_;
+
+    # get database object
+    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+
+    return if !$DBObject->Prepare(
+        SQL  => "SELECT site, type_of_application, company_name, requestor_name, nric_passport_no, contact_number, email_address, date_of_request, reason, please_specify, delivery_personnel_company_name, deliverer_name, delivery_personnel_nric_passport_no, delivery_personnel_contact_number, delivery_personnel_vehicles_no, delivery_date_time, storage_location, delivery_tools, delivery_others_details, protection_required, protection_required_specify_details, any_special_needs_during_delivery, create_time, change_time from move_in_out_equipment where ticket_id = ?",
+        Bind => [ \$Param{TicketID} ],
+    );
+
+    my %Data;
+    while ( my @Data = $DBObject->FetchrowArray() ) {
+        %Data = (
+            "Site"                                     => $Data[0],
+            "Type of Application"                      => $Data[1],
+            "Company Name"                             => $Data[2],
+            "Requestor Name"                           => $Data[3],
+            "NRIC / Passport No"                      => $Data[4],
+            "Contact Number"                           => $Data[5],
+            "Email Address"                            => $Data[6],
+            "Date of Request"                          => $Data[7],
+            "Reason"                                   => $Data[8],
+            "Please specify"                           => $Data[9],
+            "Delivery Personnel Company Name"          => $Data[10],
+            "Deliverer Name"                           => $Data[11],
+            "Delivery Personnel NRIC / Passport No"    => $Data[12],
+            "Delivery Personnel Contact Number"        => $Data[13],
+            "Delivery Personnel Vehicles No"           => $Data[14],
+            "Delivery Date Time"                       => $Data[15],
+            "Storage Location"                         => $Data[16],
+            "Delivery Tools"                           => $Data[17],
+            "Delivery Others Details"                  => $Data[18],
+            "Protection required"                      => $Data[19],
+            "Protection required specify details"      => $Data[20],
+            "Any special needs during delivery"        => $Data[21],
+        );
+    }
+
+    return %Data; 
+}
+
+sub UpdateMoveInOutEquipmentDetails{
+    my ( $Self, %Param ) = @_;
+    # check needed stuff
+    for my $Argument (qw(TicketID )) {
+        if ( !$Param{$Argument} ) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "Need $Argument!",
+            );
+            return;
+        }
+    }
+
+    $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => "Values in update >>> $Param{site},$Param{type_of_application},$Param{company_name},$Param{requestor_name},$Param{nric_passport_no},",
+        );
+
+    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+    return if !$DBObject->Do(
+        SQL => '
+            UPDATE move_in_out_equipment
+            SET site = ?, type_of_application = ?, company_name = ?, requestor_name = ?, nric_passport_no = ?, contact_number = ?, email_address = ?, date_of_request = ?, reason = ?, please_specify = ?, delivery_personnel_company_name = ?, deliverer_name = ?,delivery_personnel_nric_passport_no = ?, delivery_personnel_contact_number = ?, delivery_personnel_vehicles_no = ?, delivery_date_time = ?, storage_location = ?, delivery_tools = ?, delivery_others_details = ?, protection_required = ?, protection_required_specify_details = ?, any_special_needs_during_delivery = ?, create_time = current_timestamp, change_time = current_timestamp WHERE ticket_id = ?',
+        Bind => [\$Param{site}, \$Param{type_of_application}, \$Param{company_name}, \$Param{requestor_name}, \$Param{nric_passport_no}, \$Param{contact_number}, \$Param{email_address}, \$Param{date_of_request},  \$Param{reason}, \$Param{please_specify}, \$Param{delivery_personnel_company_name},  \$Param{deliverer_name},  \$Param{delivery_personnel_nric_passport_no}, \$Param{delivery_personnel_contact_number}, \$Param{delivery_personnel_vehicles_no}, \$Param{delivery_date_time}, \$Param{storage_location}, \$Param{delivery_tools}, \$Param{delivery_others_details},  \$Param{protection_required}, \$Param{protection_required_specify_details}, \$Param{any_special_needs_during_delivery}, \$Param{TicketID}
+        ],
+    );
+
+    return 1
+}
+
 sub Add_equipment_Details{
     my ( $Self, %Param ) = @_;
     # check needed stuff
